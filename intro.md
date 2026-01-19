@@ -1,11 +1,15 @@
-# Welcome to your Jupyter Book
+# Math Notes
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+These notes build intuition for core tools used in economics, data science, and optimization.
 
-Check out the content pages bundled with this sample book to see more.
+**Topics (in progress)**
+
+- Linear Algebra
+- Calculus
+- Difference & Differential Equations
+
+```{note}
+This is a living document. I will revise and expand as the course evolves.
 
 ```{tableofcontents}
 ```

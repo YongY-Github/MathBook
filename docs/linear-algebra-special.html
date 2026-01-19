@@ -1,0 +1,1137 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. Linear Algebra: Special Matrices &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'linear-algebra-special';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="2. Linear Algebra: Basics" href="linear-algebra-basic.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Math Notes
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-basic.html">2. Linear Algebra: Basics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Linear Algebra: Special Matrices</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flinear-algebra-special.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/linear-algebra-special.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>3. Linear Algebra: Special Matrices</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jacobian">The Jacobian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hessian">The Hessian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-discriminant">The Discriminant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-quadratic-form">The Quadratic Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-hessian">Higher Order Hessian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bordered-hessian">The Bordered Hessian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inputoutput-analysis">Input‑Output Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristic-roots-and-vectors-eigenvalues-and-eigenvectors">Characteristic Roots and Vectors (Eigenvalues and Eigenvectors)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-algebra-special-matrices">
+<h1>3. Linear Algebra: Special Matrices<a class="headerlink" href="#linear-algebra-special-matrices" title="Link to this heading">#</a></h1>
+<p>Let’s look at some special matrices and determinants that are useful in economic analysis.</p>
+<section id="the-jacobian">
+<h2>The Jacobian<a class="headerlink" href="#the-jacobian" title="Link to this heading">#</a></h2>
+<p>The Jacobian (named after German mathematician Karl Gustav Jacobi, 1804–1851) is generally used in conjunction with partial derivatives to provide an easy test for the existence of functional dependence (linear and nonlinear). A Jacobian determinant <span class="math notranslate nohighlight">\(|\mathbf{J}|\)</span> is composed of all the first‑order partial derivatives of a system of equations, arranged in order sequence. Given</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y_{1} = f_{1}(x_{1},x_{2},x_{3}) \\
+y_{2} = f_{2}(x_{1},x_{2},x_{3}) \\
+y_{3} = f_{3}(x_{1},x_{2},x_{3})
+\end{split}\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|\mathbf{J}| = 
+\begin{vmatrix}
+\frac{\partial y_{1}}{\partial x_{1}} &amp; \frac{\partial y_{1}}{\partial x_{2}} &amp; \frac{\partial y_{1}}{\partial x_{3}} \\[4pt]
+\frac{\partial y_{2}}{\partial x_{1}} &amp; \frac{\partial y_{2}}{\partial x_{2}} &amp; \frac{\partial y_{2}}{\partial x_{3}} \\[4pt]
+\frac{\partial y_{3}}{\partial x_{1}} &amp; \frac{\partial y_{3}}{\partial x_{2}} &amp; \frac{\partial y_{3}}{\partial x_{3}}
+\end{vmatrix}
+\end{split}\]</div>
+<p>For example, say you have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y_{1} = 5x_{1} + 3x_{2} \\
+y_{2} = 25x_{1}^{2} + 30x_{1}x_{2} + 9x_{2}^{2}
+\end{split}\]</div>
+<p>Then taking the first‑order partials gives</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial y_1}{\partial x_1} = 5,\qquad 
+\frac{\partial y_1}{\partial x_2} = 3,\qquad 
+\frac{\partial y_2}{\partial x_1} = 50x_1 + 30x_2,\qquad 
+\frac{\partial y_2}{\partial x_2} = 30x_1 + 18x_2
+\]</div>
+<p>And the Jacobian is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|\mathbf{J}| = 
+\begin{vmatrix}
+5 &amp; 3 \\
+50x_1 + 30x_2 &amp; 30x_1 + 18x_2
+\end{vmatrix}
+\end{split}\]</div>
+<p>The determinant of the Jacobian matrix is</p>
+<div class="math notranslate nohighlight">
+\[
+|\mathbf{J}| = 5(30x_1 + 18x_2) - 3(50x_1 + 30x_2) = 0
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(|\mathbf{J}| = 0\)</span>, there is functional dependence between the equations. (Note: <span class="math notranslate nohighlight">\((5x_{1} + 3x_{2})^{2} = 25x_{1}^{2} + 30x_{1}x_{2} + 9x_{2}^{2}\)</span>.)</p>
+</section>
+<section id="the-hessian">
+<h2>The Hessian<a class="headerlink" href="#the-hessian" title="Link to this heading">#</a></h2>
+<p>Given that the first‑order conditions <span class="math notranslate nohighlight">\(z_{x} = z_{y} = 0\)</span> are met, a sufficient condition for a multivariate function <span class="math notranslate nohighlight">\(z = f(x,y)\)</span> to be an optimum is</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(z_{xx}, z_{yy} &gt; 0\)</span> for a minimum; <span class="math notranslate nohighlight">\(z_{xx}, z_{yy} &lt; 0\)</span> for a maximum.</p></li>
+<li><p><span class="math notranslate nohighlight">\(z_{xx} z_{yy} &gt; (z_{xy})^{2}\)</span>.</p></li>
+</ol>
+<p>A convenient test for this second‑order condition is provided by the Hessian. A Hessian <span class="math notranslate nohighlight">\(|\mathbf{H}|\)</span> is a determinant composed of all the second‑order partial derivatives, with the second‑order direct partials on the principal diagonal and the second‑order cross partials off the principal diagonal. That is,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|\mathbf{H}| = 
+\begin{vmatrix}
+z_{xx} &amp; z_{xy} \\
+z_{yx} &amp; z_{yy}
+\end{vmatrix}
+\end{split}\]</div>
+<p>where (by Young’s Theorem) <span class="math notranslate nohighlight">\(z_{xy} = z_{yx}\)</span>.</p>
+<p>If the first element on the principal diagonal, a.k.a. the first principal minor, <span class="math notranslate nohighlight">\(|H_{1}| = z_{xx}\)</span> is positive, and the second principal minor</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|H_{2}| = 
+\begin{vmatrix}
+z_{xx} &amp; z_{xy} \\
+z_{yx} &amp; z_{yy}
+\end{vmatrix}
+= z_{xx} z_{yy} - (z_{xy})^{2} &gt; 0,
+\end{split}\]</div>
+<p>then the second‑order conditions for a minimum are set. That is, when <span class="math notranslate nohighlight">\(|H_{1}| &gt; 0\)</span> and <span class="math notranslate nohighlight">\(|H_{2}| &gt; 0\)</span>, the Hessian <span class="math notranslate nohighlight">\(|\mathbf{H}|\)</span> is said to be <strong>positive definite</strong>. And a positive definite Hessian fulfills the second‑order conditions for a minimum.</p>
+<p>If the first principal minor <span class="math notranslate nohighlight">\(|H_{1}| &lt; 0\)</span>, while the second principal minor remains positive, then the second‑order conditions for a maximum are met. That is, when <span class="math notranslate nohighlight">\(|H_{1}| &lt; 0\)</span> and <span class="math notranslate nohighlight">\(|H_{2}| &gt; 0\)</span>, the Hessian <span class="math notranslate nohighlight">\(|\mathbf{H}|\)</span> is said to be <strong>negative definite</strong> and fulfills the second‑order conditions for a maximum.</p>
+<p>Let’s take an example:</p>
+<p>Given</p>
+<div class="math notranslate nohighlight">
+\[
+z = f(x,y) = 2x^{2} - xy + 2y^{2} - 5x - 6y + 20,
+\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[
+z_x = 4x - y - 5,\quad z_y = -x + 4y - 6,\quad z_{xx} = 4,\quad z_{yy} = 4,\quad z_{xy} = z_{yx} = -1.
+\]</div>
+<p>The Hessian is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|\mathbf{H}| = 
+\begin{vmatrix}
+4 &amp; -1 \\
+-1 &amp; 4
+\end{vmatrix}
+\end{split}\]</div>
+<p>We have <span class="math notranslate nohighlight">\(|H_{1}| = 4 &gt; 0\)</span> and <span class="math notranslate nohighlight">\(|H_{2}| = (4)(4) - (-1)^2 = 16 - 1 = 15 &gt; 0\)</span>. Since <span class="math notranslate nohighlight">\(|H_{1}| &gt; 0\)</span> and <span class="math notranslate nohighlight">\(|H_{2}| &gt; 0\)</span>, i.e. the Hessian is positive definite, then the function <span class="math notranslate nohighlight">\(z\)</span> is characterized by a minimum at the critical values (can you find these?).</p>
+</section>
+<section id="the-discriminant">
+<h2>The Discriminant<a class="headerlink" href="#the-discriminant" title="Link to this heading">#</a></h2>
+<p>Determinants can be used to test for positive and negative definiteness of any quadratic form. The determinant of a quadratic form is called a <strong>discriminant</strong> <span class="math notranslate nohighlight">\(|\mathbf{D}|\)</span>. Given the quadratic form</p>
+<div class="math notranslate nohighlight">
+\[
+z = a x^{2} + b x y + c y^{2},
+\]</div>
+<p>the determinant is formed by placing the coefficients of the squared terms on the principal diagonal and dividing the coefficients of the non‑squared terms equally between the off‑diagonal positions. Hence, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|\mathbf{D}| = 
+\begin{vmatrix}
+a &amp; b/2 \\
+b/2 &amp; c
+\end{vmatrix}
+\end{split}\]</div>
+<p>We then evaluate the principal minors like we did for the Hessian test, where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|D_{1}| = a \quad \text{and} \quad |D_{2}| = 
+\begin{vmatrix}
+a &amp; b/2 \\
+b/2 &amp; c
+\end{vmatrix}
+= a c - \frac{b^{2}}{4}.
+\end{split}\]</div>
+<p>If <span class="math notranslate nohighlight">\(|D_{1}|, |D_{2}| &gt; 0\)</span>, <span class="math notranslate nohighlight">\(|\mathbf{D}|\)</span> is positive definite and <span class="math notranslate nohighlight">\(z\)</span> is positive for all nonzero values of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. If <span class="math notranslate nohighlight">\(|D_{1}| &lt; 0\)</span> and <span class="math notranslate nohighlight">\(|D_{2}| &gt; 0\)</span>, <span class="math notranslate nohighlight">\(|\mathbf{D}|\)</span> is negative definite and <span class="math notranslate nohighlight">\(z\)</span> is negative for all nonzero values of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. If <span class="math notranslate nohighlight">\(|D_{2}| \neq 0\)</span>, <span class="math notranslate nohighlight">\(z\)</span> is not sign definite and <span class="math notranslate nohighlight">\(z\)</span> may assume both positive and negative values.</p>
+<p>Let’s take an example to test for sign definiteness of the following quadratic form</p>
+<div class="math notranslate nohighlight">
+\[
+z = 2x^{2} + 5xy + 8y^{2}.
+\]</div>
+<p>We can easily form the discriminant</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|\mathbf{D}| = 
+\begin{vmatrix}
+2 &amp; 2.5 \\
+2.5 &amp; 8
+\end{vmatrix}
+\end{split}\]</div>
+<p>Then evaluating the principal minors gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|D_{1}| = 2 &gt; 0, \qquad |D_{2}| = 
+\begin{vmatrix}
+2 &amp; 2.5 \\
+2.5 &amp; 8
+\end{vmatrix}
+= 16 - 6.25 = 9.75 &gt; 0.
+\end{split}\]</div>
+<p>Hence, <span class="math notranslate nohighlight">\(z\)</span> is positive definite, meaning that it will be greater than zero for all nonzero values of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
+</section>
+<section id="the-quadratic-form">
+<h2>The Quadratic Form<a class="headerlink" href="#the-quadratic-form" title="Link to this heading">#</a></h2>
+<p>A quadratic form is defined as a polynomial expression in which each component term has a uniform degree.</p>
+<p>Here are some examples:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+6x^{2} - 2xy + 3y^{2} \quad \text{is a quadratic form in 2 variables.} \\
+x^{2} + 2xy + 4xz + 2yz + y^{2} + z^{2} \quad \text{is a quadratic form in 3 variables.}
+\end{split}\]</div>
+<p>It would be useful to determine the sign definiteness so we can make statements concerning the optimum value of the function as to whether it is a minimum or a maximum.</p>
+<p>More generally, a quadratic form in <span class="math notranslate nohighlight">\(n\)</span> variables <span class="math notranslate nohighlight">\((x_{1},x_{2},\ldots ,x_{n})\)</span> can be written as <span class="math notranslate nohighlight">\(\mathbf{x}^{\prime}\mathbf{A}\mathbf{x}\)</span> where</p>
+<p><span class="math notranslate nohighlight">\(\mathbf{x}^{\prime}\)</span> is a row vector <span class="math notranslate nohighlight">\([x_{1},x_{2},\dots,x_{n}]\)</span> and<br />
+<span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is an <span class="math notranslate nohighlight">\(n\times n\)</span> matrix of scalar elements.</p>
+<p>To see this more clearly,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{x}^{\prime}\mathbf{A}\mathbf{x} = 
+\begin{bmatrix}
+x_{1} &amp; x_{2}
+\end{bmatrix}
+\begin{bmatrix}
+1 &amp; 3 \\
+4 &amp; 5
+\end{bmatrix}
+\begin{bmatrix}
+x_{1} \\
+x_{2}
+\end{bmatrix}
+= 
+\begin{bmatrix}
+x_{1} + 4x_{2} &amp; 3x_{1} + 5x_{2}
+\end{bmatrix}
+\begin{bmatrix}
+x_{1} \\
+x_{2}
+\end{bmatrix}
+= x_{1}^{2} + 7x_{1}x_{2} + 5x_{2}^{2}.
+\end{split}\]</div>
+<p>A quadratic form is said to be:</p>
+<p>a) <strong>Positive definite</strong> if <span class="math notranslate nohighlight">\(\mathbf{x}^{\prime}\mathbf{A}\mathbf{x} &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(\mathbf{x} \neq \mathbf{0}\)</span>.<br />
+b) <strong>Positive semi‑definite</strong> if <span class="math notranslate nohighlight">\(\mathbf{x}^{\prime}\mathbf{A}\mathbf{x} \geq 0\)</span> and <span class="math notranslate nohighlight">\(\exists \mathbf{x} \neq \mathbf{0}\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{x}^{\prime}\mathbf{A}\mathbf{x} = 0\)</span>.<br />
+c) <strong>Negative definite</strong> if <span class="math notranslate nohighlight">\(\mathbf{x}^{\prime}\mathbf{A}\mathbf{x} &lt; 0\)</span> for all <span class="math notranslate nohighlight">\(\mathbf{x} \neq \mathbf{0}\)</span>.<br />
+d) <strong>Negative semi‑definite</strong> if <span class="math notranslate nohighlight">\(\mathbf{x}^{\prime}\mathbf{A}\mathbf{x} \leq 0\)</span> and <span class="math notranslate nohighlight">\(\exists \mathbf{x} \neq \mathbf{0}\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{x}^{\prime}\mathbf{A}\mathbf{x} = 0\)</span>.<br />
+e) <strong>Sign indefinite</strong> if it takes both positive and negative values.</p>
+<p>Quadratic forms are particularly useful in determining the concavity or convexity of a differentiable function.</p>
+<p>For a function <span class="math notranslate nohighlight">\(y = f(x_{1},x_{2},\dots,x_{n})\)</span>, we can form the Hessian consisting of second‑order partial derivatives and construct a quadratic form as <span class="math notranslate nohighlight">\(\mathbf{x}^{\prime}\mathbf{H}\mathbf{x}\)</span>. Then</p>
+<p>a) The function <span class="math notranslate nohighlight">\(y\)</span> is strictly convex if the quadratic form is positive (implying that the Hessian is positive definite, i.e., the determinants of the principal minors are all positive).<br />
+b) The function <span class="math notranslate nohighlight">\(y\)</span> is strictly concave if the quadratic form is negative (that is, the Hessian is negative definite, i.e. the determinants of the principal minors alternate in sign).</p>
+<p>Let’s take an example to see this more clearly.</p>
+<p>Say we have</p>
+<div class="math notranslate nohighlight">
+\[
+z = x^{2} + y^{2}.
+\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+z_{x} = 2x,\quad z_{xx} = 2,\quad z_{xy} = 0, \\
+z_{y} = 2y,\quad z_{yx} = 0,\quad z_{yy} = 2.
+\end{split}\]</div>
+<p>But</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}^{\prime}\mathbf{H}\mathbf{x} = z_{xx}x^{2} + z_{yy}y^{2} + z_{xy}z_{yx}xy = 2x^{2} + 2y^{2} &gt; 0.
+\]</div>
+<p>Hence the function <span class="math notranslate nohighlight">\(z = x^{2} + y^{2}\)</span> is characterized by a minimum at its optimal value and is therefore a strictly convex function. And it is easy to see that the Hessian is positive definite!</p>
+<p>Here’s another example:</p>
+<p>Say we have a quadratic form in 2 variables</p>
+<div class="math notranslate nohighlight">
+\[
+z = 8x^{2} + 6xy + 2y^{2}.
+\]</div>
+<p>This can be rearranged as</p>
+<div class="math notranslate nohighlight">
+\[
+z = 8x^{2} + 3xy + 3xy + 2y^{2}.
+\]</div>
+<p>We can write this as</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}^{\prime}\mathbf{H}\mathbf{x} = z_{xx}x^{2} + z_{yy}y^{2} + z_{xy}z_{yx}xy = 8x^{2} + 2y^{2} + (3)(3)xy = 8x^{2} + 2y^{2} + 9xy.
+\]</div>
+<p>The Hessian is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{H} = 
+\begin{bmatrix}
+8 &amp; 3 \\
+3 &amp; 2
+\end{bmatrix}
+\end{split}\]</div>
+<p>The principal minors are <span class="math notranslate nohighlight">\(|H_{1}| = 8\)</span> and <span class="math notranslate nohighlight">\(|H_{2}| = 
+\begin{vmatrix}
+8 &amp; 3 \\
+3 &amp; 2
+\end{vmatrix} = 16 - 9 = 7.\)</span></p>
+<p>Both are positive so we have the Hessian and the quadratic form as positive definite.</p>
+</section>
+<section id="higher-order-hessian">
+<h2>Higher Order Hessian<a class="headerlink" href="#higher-order-hessian" title="Link to this heading">#</a></h2>
+<p>Given <span class="math notranslate nohighlight">\(y = f(x_{1},x_{2},x_{3})\)</span>, the third‑order Hessian is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|\mathbf{H}| = 
+\begin{vmatrix}
+y_{11} &amp; y_{12} &amp; y_{13} \\
+y_{21} &amp; y_{22} &amp; y_{23} \\
+y_{31} &amp; y_{32} &amp; y_{33}
+\end{vmatrix}
+\end{split}\]</div>
+<p>where the elements are the various second‑order partial derivatives of <span class="math notranslate nohighlight">\(y\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+y_{11} = \frac{\partial^{2}y}{\partial x_{1}^{2}},\quad 
+y_{12} = \frac{\partial^{2}y}{\partial x_{2}\partial x_{1}},\quad 
+y_{23} = \frac{\partial^{2}y}{\partial x_{3}\partial x_{2}},\quad \text{etc.}
+\]</div>
+<p>Conditions for a relative minimum or maximum depend on the signs of the first, second, and third principal minors, respectively. If</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|H_{1}| &gt; 0,\quad 
+|H_{2}| = 
+\begin{vmatrix}
+y_{11} &amp; y_{12} \\
+y_{21} &amp; y_{22}
+\end{vmatrix} &gt; 0,\quad 
+\text{and} \quad |H_{3}| = |\mathbf{H}| &gt; 0,
+\end{split}\]</div>
+<p>then <span class="math notranslate nohighlight">\(|\mathbf{H}|\)</span> is positive definite and fulfills the second‑order conditions for a minimum.</p>
+<p>If</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|H_{1}| &lt; 0,\quad 
+|H_{2}| = 
+\begin{vmatrix}
+y_{11} &amp; y_{12} \\
+y_{21} &amp; y_{22}
+\end{vmatrix} &gt; 0,\quad 
+\text{and} \quad |H_{3}| = |\mathbf{H}| &lt; 0,
+\end{split}\]</div>
+<p>then <span class="math notranslate nohighlight">\(|\mathbf{H}|\)</span> is negative definite and fulfills the second‑order conditions for a maximum.</p>
+<p>Let’s take an example.</p>
+<p>Given the function</p>
+<div class="math notranslate nohighlight">
+\[
+y = -5x_{1}^{2} + 10x_{1} + x_{1}x_{3} - 2x_{2}^{2} + 4x_{2} + 2x_{2}x_{3} - 4x_{3}^{2}.
+\]</div>
+<p>The first order conditions (F.O.C) are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\frac{\partial y}{\partial x_1} = y_1 = -10x_1 + 10 + x_3 = 0, \\
+\frac{\partial y}{\partial x_2} = y_2 = -4x_2 + 2x_3 + 4 = 0, \\
+\frac{\partial y}{\partial x_3} = y_3 = x_1 + 2x_2 - 8x_3 = 0.
+\end{split}\]</div>
+<p>which can be expressed in matrix form as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+-10 &amp; 0 &amp; 1 \\
+0 &amp; -4 &amp; 2 \\
+1 &amp; 2 &amp; -8
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix}
+= 
+\begin{bmatrix}
+-10 \\ -4 \\ 0
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Using Cramer’s rule we get <span class="math notranslate nohighlight">\(x_1 \approx 1.04\)</span>, <span class="math notranslate nohighlight">\(x_2 \approx 1.22\)</span> and <span class="math notranslate nohighlight">\(x_3 \approx 0.43\)</span> (please verify this).</p>
+<p>Let’s take the second partial derivatives from the first‑order conditions to create the Hessian,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y_{11} = -10,\quad y_{12} = 0,\quad y_{13} = 1, \\
+y_{21} = 0,\quad y_{22} = -4,\quad y_{23} = 2, \\
+y_{31} = 1,\quad y_{32} = 2,\quad y_{33} = -8.
+\end{split}\]</div>
+<p>Thus,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{H} = 
+\begin{bmatrix}
+-10 &amp; 0 &amp; 1 \\
+0 &amp; -4 &amp; 2 \\
+1 &amp; 2 &amp; -8
+\end{bmatrix}
+\end{split}\]</div>
+<p>Finally, applying the Hessian test, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|H_1| = -10 &lt; 0,\quad 
+|H_2| = 
+\begin{vmatrix}
+-10 &amp; 0 \\
+0 &amp; -4
+\end{vmatrix} = 40 &gt; 0,\quad 
+|H_3| = |\mathbf{H}| = 
+\begin{vmatrix}
+-10 &amp; 0 &amp; 1 \\
+0 &amp; -4 &amp; 2 \\
+1 &amp; 2 &amp; -8
+\end{vmatrix} = -80 &lt; 0.
+\end{split}\]</div>
+<p>Since the principal minors alternate correctly in sign, the Hessian is negative definite and the function is maximized at <span class="math notranslate nohighlight">\(x_1 \approx 1.04\)</span>, <span class="math notranslate nohighlight">\(x_2 \approx 1.22\)</span> and <span class="math notranslate nohighlight">\(x_3 \approx 0.43\)</span>.</p>
+</section>
+<section id="the-bordered-hessian">
+<h2>The Bordered Hessian<a class="headerlink" href="#the-bordered-hessian" title="Link to this heading">#</a></h2>
+<p>To optimize a function <span class="math notranslate nohighlight">\(f(x_1, x_2)\)</span> subject to a constraint <span class="math notranslate nohighlight">\(g(x_1, x_2)\)</span> the first‑order conditions can be found by setting up what is known as the Lagrangian function <span class="math notranslate nohighlight">\(F(x_1, x_2, \lambda) = f(x_1, x_2) - \lambda(g(x_1, x_2) - c)\)</span>.</p>
+<p>The second‑order conditions can be expressed in terms of a bordered Hessian <span class="math notranslate nohighlight">\(|\bar{\mathbf{H}}|\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|\bar{\mathbf{H}}| = 
+\begin{vmatrix}
+0 &amp; g_1 &amp; g_2 \\
+g_1 &amp; F_{11} &amp; F_{12} \\
+g_2 &amp; F_{21} &amp; F_{22}
+\end{vmatrix}
+\end{split}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|\bar{\mathbf{H}}| = 
+\begin{vmatrix}
+0 &amp; g_1 &amp; g_2 \\
+g_1 &amp; f_{11} &amp; f_{12} \\
+g_2 &amp; f_{21} &amp; f_{22}
+\end{vmatrix}
+\end{split}\]</div>
+<p>which is the usual Hessian bordered by the first derivatives of the constraint with zero on the principal diagonal.</p>
+<p>The order of a bordered principal minor is determined by the order of the principal minor being bordered. Hence <span class="math notranslate nohighlight">\(|\bar{H}_2|\)</span> above represents a second bordered principal minor, because the principal minor being bordered has dimensions <span class="math notranslate nohighlight">\(2\times 2\)</span>.</p>
+<p>For the bivariate case with a single constraint, we simply look at <span class="math notranslate nohighlight">\(|\bar{H}_2|\)</span>. If this is negative, the bordered Hessian is said to be positive definite and satisfies the second‑order condition for a minimum. However, if it is positive, the bordered Hessian is said to be negative definite, and meets the sufficient conditions for a maximum.</p>
+<p>Let’s try optimizing the following objective function</p>
+<div class="math notranslate nohighlight">
+\[
+f(x_1, x_2) = 4x_1^2 + 3x_2^2 - 2x_1x_2
+\]</div>
+<p>subject to</p>
+<div class="math notranslate nohighlight">
+\[
+x_1 + x_2 = 56.
+\]</div>
+<p>Setting up the Lagrangian function, taking the first‑order partials and solving gives <span class="math notranslate nohighlight">\(x_1^* = 36\)</span>, <span class="math notranslate nohighlight">\(x_2^* = 20\)</span> (and <span class="math notranslate nohighlight">\(\lambda = 348\)</span>). (You should verify this.)</p>
+<p>The bordered Hessian for this optimization problem is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|\bar{\mathbf{H}}| = 
+\begin{vmatrix}
+0 &amp; 1 &amp; 1 \\
+1 &amp; 8 &amp; -2 \\
+1 &amp; -2 &amp; 6
+\end{vmatrix}
+\end{split}\]</div>
+<p>Starting with the second principal minor, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|\bar{H}_2| = |\bar{\mathbf{H}}| = 0 \cdot 
+\begin{vmatrix}
+8 &amp; -2 \\
+-2 &amp; 6
+\end{vmatrix}
+- 1 \cdot 
+\begin{vmatrix}
+1 &amp; -2 \\
+1 &amp; 6
+\end{vmatrix}
++ 1 \cdot 
+\begin{vmatrix}
+1 &amp; 8 \\
+1 &amp; -2
+\end{vmatrix}
+= - (6+2) + (-2-8) = -8 -10 = -18.
+\end{split}\]</div>
+<p>which is negative, hence <span class="math notranslate nohighlight">\(|\bar{\mathbf{H}}|\)</span> is positive definite and we have met sufficient conditions for a minimum.</p>
+<p>For the more general case in which the objective function has say <span class="math notranslate nohighlight">\(n\)</span> variables, i.e., <span class="math notranslate nohighlight">\(f(x_1, \ldots , x_n)\)</span> which is subject to some constraint <span class="math notranslate nohighlight">\(g(x_1, \ldots , x_n)\)</span>, we can set up the bordered Hessian as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|\bar{\mathbf{H}}| = 
+\begin{bmatrix}
+0 &amp; g_1 &amp; g_2 &amp; \dots &amp; g_n \\
+g_1 &amp; F_{11} &amp; F_{12} &amp; \dots &amp; F_{1n} \\
+g_2 &amp; F_{21} &amp; F_{22} &amp; \dots &amp; F_{2n} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+g_n &amp; F_{n1} &amp; F_{n2} &amp; \dots &amp; F_{nn}
+\end{bmatrix}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(|\bar{\mathbf{H}}| = |\bar{H}_n|\)</span> because the <span class="math notranslate nohighlight">\(n \times n\)</span> principal minor is bordered.</p>
+<p>In this case, if all the principal minors are negative, i.e. <span class="math notranslate nohighlight">\(|\bar{H}_2|, |\bar{H}_3|, \ldots , |\bar{H}_n| &lt; 0\)</span>, the bordered Hessian is said to be positive definite and satisfies the second‑order condition for a minimum.</p>
+<p>On the other hand, if the principal minors alternate consistently in sign from positive to negative, i.e. <span class="math notranslate nohighlight">\(|\bar{H}_2| &gt; 0, |\bar{H}_3| &lt; 0, |\bar{H}_4| &gt; 0\)</span> etc., the bordered Hessian is negative definite, and meets the sufficient conditions for a maximum.</p>
+</section>
+<section id="inputoutput-analysis">
+<h2>Input‑Output Analysis<a class="headerlink" href="#inputoutput-analysis" title="Link to this heading">#</a></h2>
+<p>If <span class="math notranslate nohighlight">\(a_{ij}\)</span> is a technical coefficient representing the value of input <span class="math notranslate nohighlight">\(i\)</span> required to produce one dollar’s worth of product <span class="math notranslate nohighlight">\(j\)</span>, the total demand for good <span class="math notranslate nohighlight">\(i\)</span> can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+x_{i} = a_{i1}x_{1} + a_{i2}x_{2} + \dots + a_{in}x_{n} + b_{i}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(b_i\)</span> is the final demand for product <span class="math notranslate nohighlight">\(i\)</span>. What is important to realize here is that the total demand for a product consists of that product being the final demand plus that product being an intermediate good required for the production of other products.</p>
+<p>In matrix form we have</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{X} = \mathbf{A}\mathbf{X} + \mathbf{B}
+\]</div>
+<p>where, for an <span class="math notranslate nohighlight">\(n\)</span> sector economy,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{X} = 
+\begin{bmatrix}
+x_1 \\ x_2 \\ \vdots \\ x_n
+\end{bmatrix},
+\quad
+\mathbf{A} = 
+\begin{bmatrix}
+a_{11} &amp; a_{12} &amp; \dots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \dots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn}
+\end{bmatrix},
+\quad
+\mathbf{B} = 
+\begin{bmatrix}
+b_1 \\ b_2 \\ \vdots \\ b_n
+\end{bmatrix}.
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is called the matrix of technical coefficients.</p>
+<p>To find the output (intermediate and final goods) needed to satisfy demand, all we have to do is to solve for <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{X} - \mathbf{A}\mathbf{X} = \mathbf{B} \quad \Rightarrow \quad (\mathbf{I} - \mathbf{A})\mathbf{X} = \mathbf{B} \quad \Rightarrow \quad \mathbf{X} = (\mathbf{I} - \mathbf{A})^{-1}\mathbf{B}.
+\]</div>
+</section>
+<section id="characteristic-roots-and-vectors-eigenvalues-and-eigenvectors">
+<h2>Characteristic Roots and Vectors (Eigenvalues and Eigenvectors)<a class="headerlink" href="#characteristic-roots-and-vectors-eigenvalues-and-eigenvectors" title="Link to this heading">#</a></h2>
+<p>For a square matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>:</p>
+<p>a) All characteristic roots <span class="math notranslate nohighlight">\(\lambda\)</span> are positive <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is positive definite.<br />
+b) All <span class="math notranslate nohighlight">\(\lambda\)</span>’s are negative <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is negative definite.<br />
+c) All <span class="math notranslate nohighlight">\(\lambda\)</span>’s are nonnegative and at least one <span class="math notranslate nohighlight">\(\lambda = 0\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is positive semi‑definite.<br />
+d) All <span class="math notranslate nohighlight">\(\lambda\)</span>’s are nonpositive and at least one <span class="math notranslate nohighlight">\(\lambda = 0\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is negative semi‑definite.<br />
+e) Some <span class="math notranslate nohighlight">\(\lambda\)</span>’s are positive and some negative <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is sign indefinite.</p>
+<p>Let’s take an example.</p>
+<p>Given a square matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{A} = 
+\begin{bmatrix}
+-6 &amp; 3 \\
+3 &amp; -6
+\end{bmatrix}
+\end{split}\]</div>
+<p>To find the characteristic roots (eigenvalues) of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, we simply set <span class="math notranslate nohighlight">\(|\mathbf{A} - \lambda \mathbf{I}| = 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|\mathbf{A} - \lambda \mathbf{I}| = 
+\begin{vmatrix}
+-6 - \lambda &amp; 3 \\
+3 &amp; -6 - \lambda
+\end{vmatrix} = 0
+\end{split}\]</div>
+<p>This means</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+(-6 - \lambda)(-6 - \lambda) - 9 = 0 \\
+\lambda^2 + 12\lambda + 27 = 0 \\
+(\lambda + 9)(\lambda + 3) = 0 \\
+\lambda = -9, -3.
+\end{split}\]</div>
+<p>Since both characteristic roots <span class="math notranslate nohighlight">\(\lambda\)</span> are negative, we say <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is negative definite.</p>
+<p>Note:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{(i) } \sum \lambda_i = \operatorname{tr}(\mathbf{A}), \qquad
+\text{(ii) } \prod \lambda_i = |\mathbf{A}|.
+\]</div>
+<p>Let’s continue with the example above to find the characteristic vector.</p>
+<p>We know one of the roots <span class="math notranslate nohighlight">\(\lambda = -9\)</span>, so substituting in the characteristic matrix gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+(\mathbf{A} - \lambda \mathbf{I})\mathbf{v} = \mathbf{0} \quad \Rightarrow \quad
+\begin{bmatrix}
+-6 - (-9) &amp; 3 \\
+3 &amp; -6 - (-9)
+\end{bmatrix}
+\begin{bmatrix}
+v_1 \\ v_2
+\end{bmatrix}
+= 
+\begin{bmatrix}
+3 &amp; 3 \\
+3 &amp; 3
+\end{bmatrix}
+\begin{bmatrix}
+v_1 \\ v_2
+\end{bmatrix}
+= 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Since the coefficient matrix is linearly dependent, there are infinite number of solutions. The product of the matrices gives two equations which are identical:</p>
+<div class="math notranslate nohighlight">
+\[
+3v_1 + 3v_2 = 0 \quad \Rightarrow \quad v_2 = -v_1.
+\]</div>
+<p>By normalizing we have</p>
+<div class="math notranslate nohighlight">
+\[
+v_1^{2} + v_2^{2} = 1.
+\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\(v_2 = -v_1\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[
+v_1^{2} + (-v_1)^{2} = 1 \quad \Rightarrow \quad 2v_1^{2} = 1 \quad \Rightarrow \quad v_1^{2} = \frac{1}{2}.
+\]</div>
+<p>Taking the positive square root gives <span class="math notranslate nohighlight">\(v_1 = \sqrt{1/2} = \frac{\sqrt{2}}{2}\)</span> and substituting into <span class="math notranslate nohighlight">\(v_2 = -v_1\)</span> gives <span class="math notranslate nohighlight">\(v_2 = -\frac{\sqrt{2}}{2}\)</span>. That is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v}_1 = 
+\begin{bmatrix}
+\frac{\sqrt{2}}{2} \\[4pt]
+-\frac{\sqrt{2}}{2}
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Using the second characteristic root <span class="math notranslate nohighlight">\(\lambda = -3\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+(\mathbf{A} - \lambda \mathbf{I})\mathbf{v} = 
+\begin{bmatrix}
+-6 - (-3) &amp; 3 \\
+3 &amp; -6 - (-3)
+\end{bmatrix}
+\begin{bmatrix}
+v_1 \\ v_2
+\end{bmatrix}
+= 
+\begin{bmatrix}
+-3 &amp; 3 \\
+3 &amp; -3
+\end{bmatrix}
+\begin{bmatrix}
+v_1 \\ v_2
+\end{bmatrix}
+= 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Multiplying out gives <span class="math notranslate nohighlight">\(-3v_1 + 3v_2 = 0\)</span> and <span class="math notranslate nohighlight">\(3v_1 - 3v_2 = 0\)</span>, so <span class="math notranslate nohighlight">\(v_1 = v_2\)</span>.</p>
+<p>Normalizing as before:</p>
+<div class="math notranslate nohighlight">
+\[
+v_1^2 + v_2^2 = 1 \quad \Rightarrow \quad 2v_1^2 = 1 \quad \Rightarrow \quad v_1 = \frac{\sqrt{2}}{2}.
+\]</div>
+<p>Hence,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v}_2 = 
+\begin{bmatrix}
+\frac{\sqrt{2}}{2} \\[4pt]
+\frac{\sqrt{2}}{2}
+\end{bmatrix}.
+\end{split}\]</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="linear-algebra-basic.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2. Linear Algebra: Basics</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jacobian">The Jacobian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hessian">The Hessian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-discriminant">The Discriminant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-quadratic-form">The Quadratic Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-hessian">Higher Order Hessian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bordered-hessian">The Bordered Hessian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inputoutput-analysis">Input‑Output Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristic-roots-and-vectors-eigenvalues-and-eigenvectors">Characteristic Roots and Vectors (Eigenvalues and Eigenvectors)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

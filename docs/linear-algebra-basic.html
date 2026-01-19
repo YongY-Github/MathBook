@@ -1,0 +1,810 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Linear Algebra: Basics &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'linear-algebra-basic';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Linear Algebra: Special Matrices" href="linear-algebra-special.html" />
+    <link rel="prev" title="Math Notes" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Math Notes
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Linear Algebra: Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-special.html">3. Linear Algebra: Special Matrices</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flinear-algebra-basic.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/linear-algebra-basic.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2. Linear Algebra: Basics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-basics">Matrix Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idempotent-matrix">Idempotent matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-notes-on-matrices">Some Notes on Matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-of-equations-in-matrix-form">Systems of Equations in Matrix Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">Matrix Inversion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-determinant-of-a-matrix">The Determinant of a Matrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-determinants">Properties of Determinants</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-inverse-of-a-matrix">Finding the Inverse of a Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cramer-s-rule">Cramer’s Rule</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-algebra-basics">
+<h1>2. Linear Algebra: Basics<a class="headerlink" href="#linear-algebra-basics" title="Link to this heading">#</a></h1>
+<section id="matrix-basics">
+<h2>Matrix Basics<a class="headerlink" href="#matrix-basics" title="Link to this heading">#</a></h2>
+<p><strong>Matrix addition and subtraction:</strong> If <span class="math notranslate nohighlight">\(\mathbf{A} = (a_{ij})\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B} = (b_{ij})\)</span> are two <span class="math notranslate nohighlight">\(m \times n\)</span> matrices of same dimension, then <span class="math notranslate nohighlight">\(\mathbf{A} + \mathbf{B}\)</span> is defined as <span class="math notranslate nohighlight">\((a_{ij} + b_{ij})\)</span>. That is, we add element by element the two matrices.<br />
+Clearly <span class="math notranslate nohighlight">\(\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}\)</span>. The rule applies to matrix subtraction.</p>
+<p><strong>Transpose of a matrix:</strong> If <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix, then <span class="math notranslate nohighlight">\(\mathbf{A}'\)</span> is the <span class="math notranslate nohighlight">\(n \times m\)</span> matrix whose rows are the columns of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>. So <span class="math notranslate nohighlight">\(\mathbf{A}' = (a_{ji})\)</span>. For example:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+a &amp; b \\
+c &amp; d
+\end{bmatrix}' = \begin{bmatrix}
+a &amp; c \\
+b &amp; d
+\end{bmatrix}
+\end{split}\]</div>
+<p>Note: <span class="math notranslate nohighlight">\((\mathbf{A} + \mathbf{B})' = \mathbf{A}' + \mathbf{B}'\)</span>, however <span class="math notranslate nohighlight">\((\mathbf{A}\mathbf{B})' = \mathbf{B}'\mathbf{A}'\)</span>.</p>
+<p><strong>Null matrix:</strong> Has all elements as 0. Clearly <span class="math notranslate nohighlight">\(\mathbf{A} + \mathbf{0}_{m,n} = \mathbf{0}_{m,n} + \mathbf{A} = \mathbf{A}\)</span> for all <span class="math notranslate nohighlight">\(m \times n\)</span> matrices.</p>
+<p><strong>Scalar multiplication:</strong> If <span class="math notranslate nohighlight">\(\mathbf{A} = (a_{ij})\)</span> then for any constant <span class="math notranslate nohighlight">\(k\)</span>, define <span class="math notranslate nohighlight">\(k\mathbf{A} = (k a_{ij})\)</span>. That is, multiply each element in <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> by <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p><strong>Matrix multiplication:</strong> Say <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is <span class="math notranslate nohighlight">\(m \times n\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> is <span class="math notranslate nohighlight">\(n \times p\)</span>, then the <span class="math notranslate nohighlight">\(m \times p\)</span> matrix <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> is the product of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>. For example:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+a &amp; b \\
+c &amp; d
+\end{bmatrix}
+\begin{bmatrix}
+e &amp; f \\
+g &amp; h
+\end{bmatrix}
+= \begin{bmatrix}
+ae + bg &amp; af + bh \\
+ce + dg &amp; cf + dh
+\end{bmatrix}
+\end{split}\]</div>
+<p>and the matrices <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are conformable.</p>
+<p><strong>Diagonal matrix:</strong> A square <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is diagonal if all entries off the ‘main diagonal’ are zero, i.e.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{A} = \begin{bmatrix}
+a_{11} &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; a_{22} &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; a_{nn}
+\end{bmatrix}
+\end{split}\]</div>
+<p>Note: The elements in the diagonal of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> are the same as those in <span class="math notranslate nohighlight">\(\mathbf{A}'\)</span>.</p>
+<p><strong>Trace of a square matrix:</strong> If <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is a square matrix, the trace of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, denoted <span class="math notranslate nohighlight">\(\operatorname{tr}(\mathbf{A})\)</span>, is the sum of the elements on the main/leading diagonal of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
+<p><strong>Identity matrix:</strong> Denoted by <span class="math notranslate nohighlight">\(\mathbf{I}_n\)</span>, the <span class="math notranslate nohighlight">\(n \times n\)</span> diagonal matrix with <span class="math notranslate nohighlight">\(a_{ii} = 1\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>. That is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{I}_n = \begin{bmatrix}
+1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1
+\end{bmatrix}
+\end{split}\]</div>
+<p><strong>Symmetric matrix:</strong> A square matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is symmetric if <span class="math notranslate nohighlight">\(\mathbf{A} = \mathbf{A}'\)</span>. The identity matrix and the square null matrix are symmetric.</p>
+</section>
+<section id="idempotent-matrix">
+<h2>Idempotent matrix<a class="headerlink" href="#idempotent-matrix" title="Link to this heading">#</a></h2>
+<p>A square matrix is said to be idempotent if <span class="math notranslate nohighlight">\(\mathbf{A}^2 = \mathbf{A}\)</span>. Below is an example (try squaring the matrix and see what you get).</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; 0
+\end{bmatrix}
+\end{split}\]</div>
+<p><strong>Singular Matrix:</strong> A matrix that is linearly dependent (in the columns or rows) is singular and has determinant of zero. Note that any two (or three) vectors <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> (and <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>) are said to be linearly dependent iff one can be written as a scalar multiple of the other. Two vectors <span class="math notranslate nohighlight">\(\mathbf{x} \neq \mathbf{0}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y} \neq \mathbf{0}\)</span> are said to be <strong>linearly independent</strong> iff the ONLY solution to <span class="math notranslate nohighlight">\(a\mathbf{x} + b\mathbf{y} = \mathbf{0}\)</span> is <span class="math notranslate nohighlight">\(a = 0\)</span> AND <span class="math notranslate nohighlight">\(b = 0\)</span>. And <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> are said to be <strong>orthogonal</strong>.</p>
+</section>
+<section id="some-notes-on-matrices">
+<h2>Some Notes on Matrices<a class="headerlink" href="#some-notes-on-matrices" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Usually <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}\)</span>. For example, try <span class="math notranslate nohighlight">\(\mathbf{A} = \begin{bmatrix}2 &amp; 0 \\ 3 &amp; 1\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B} = \begin{bmatrix}0 &amp; 1 \\ 0 &amp; 0\end{bmatrix}\)</span>.</p></li>
+<li><p>We can have <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B} = \mathbf{0}\)</span> even if <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> or <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are not zero. For example, try <span class="math notranslate nohighlight">\(\mathbf{A} = \begin{bmatrix}6 &amp; -12 \\ -3 &amp; 6\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B} = \begin{bmatrix}12 &amp; 6 \\ 6 &amp; 3\end{bmatrix}\)</span>.</p></li>
+<li><p>Say, <span class="math notranslate nohighlight">\(\mathbf{A} = \begin{bmatrix}4 &amp; 8 \\ 1 &amp; 2\end{bmatrix}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{B} = \begin{bmatrix}2 &amp; 1 \\ 2 &amp; 2\end{bmatrix}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{C} = \begin{bmatrix}-2 &amp; 1 \\ 4 &amp; 2\end{bmatrix}\)</span>. We find that <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B} = \mathbf{A}\mathbf{C}\)</span> even though <span class="math notranslate nohighlight">\(\mathbf{B} \neq \mathbf{C}\)</span>.</p></li>
+<li><p>Say <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are singular matrices. Then <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> will not be zero, although the product will be a singular matrix.</p></li>
+</ol>
+</section>
+<section id="systems-of-equations-in-matrix-form">
+<h2>Systems of Equations in Matrix Form<a class="headerlink" href="#systems-of-equations-in-matrix-form" title="Link to this heading">#</a></h2>
+<p>One of the uses of linear algebra in economics is to represent and then solve systems of equations. For instance, consider the system of two equations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+3x_1 + 4x_2 = 5 \\
+7x_1 - 2x_2 = 2
+\end{split}\]</div>
+<p>Here, we can define:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{A} = \begin{pmatrix} 3 &amp; 4 \\ 7 &amp; -2 \end{pmatrix}, \quad \mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}, \quad \mathbf{b} = \begin{pmatrix} 5 \\ 2 \end{pmatrix}
+\end{split}\]</div>
+<p>Then we see that:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{A}\mathbf{x} = \begin{pmatrix} 3 &amp; 4 \\ 7 &amp; -2 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 3x_1 + 4x_2 \\ 7x_1 - 2x_2 \end{pmatrix}
+\end{split}\]</div>
+<p>The original system is in fact equivalent to the matrix form:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{A}\mathbf{x} = \mathbf{b}
+\]</div>
+</section>
+<section id="matrix-inversion">
+<h2>Matrix Inversion<a class="headerlink" href="#matrix-inversion" title="Link to this heading">#</a></h2>
+<p>To better understand the mechanics of finding the inverse of a square matrix, let’s begin by looking at an example.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{A} = \begin{bmatrix} 1 &amp; -2 \\ 3 &amp; 4 \end{bmatrix}
+\end{split}\]</div>
+<p>Assume we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix} = \begin{bmatrix} 4 &amp; 2 \\ -3 &amp; 1 \end{bmatrix}
+\end{split}\]</div>
+<p>Where does the 10 in the matrix after the = sign come from? It is the determinant of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
+<p>Now we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix} 4 &amp; 2 \\ -3 &amp; 1 \end{bmatrix} \begin{bmatrix} 1 &amp; -2 \\ 3 &amp; 4 \end{bmatrix} = \begin{bmatrix} 10 &amp; 0 \\ 0 &amp; 10 \end{bmatrix} = 10 \mathbf{I}
+\end{split}\]</div>
+<p>Hence, (pre-)multiplying both sides of the equation by <span class="math notranslate nohighlight">\(\frac{1}{10}\)</span> will give you:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\frac{1}{10} \begin{bmatrix} 4 &amp; 2 \\ -3 &amp; 1 \end{bmatrix} \begin{bmatrix} 1 &amp; -2 \\ 3 &amp; 4 \end{bmatrix} = \mathbf{I}
+\end{split}\]</div>
+<p>The matrix <span class="math notranslate nohighlight">\(\frac{1}{10} \begin{bmatrix} 4 &amp; 2 \\ -3 &amp; 1 \end{bmatrix}\)</span> is in fact the inverse of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>. Hence we have the relationship <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{A}^{-1} = \mathbf{I}\)</span>. In fact, <span class="math notranslate nohighlight">\(\mathbf{A}^{-1}\mathbf{A} = \mathbf{A}\mathbf{A}^{-1} = \mathbf{I}\)</span>.</p>
+<p>Here are some properties of the inverse of a matrix worth knowing:</p>
+<p><strong>Property 1:</strong> For any nonsingular matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, <span class="math notranslate nohighlight">\((\mathbf{A}^{-1})^{-1} = \mathbf{A}\)</span>.</p>
+<p><strong>Property 2:</strong> The determinant of the inverse of a matrix is equal to the reciprocal of the determinant of the matrix. That is <span class="math notranslate nohighlight">\(|\mathbf{A}^{-1}| = \frac{1}{|\mathbf{A}|}\)</span>.</p>
+<p><strong>Property 3:</strong> The inverse of matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is unique.</p>
+<p><strong>Property 4:</strong> For any nonsingular matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, the inverse of the transpose of a matrix is equal to the transpose of the inverse of the matrix. <span class="math notranslate nohighlight">\((\mathbf{A}')^{-1} = (\mathbf{A}^{-1})'\)</span>.</p>
+<p><strong>Property 5:</strong> If <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are nonsingular and of the same dimension, then <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> is also nonsingular.</p>
+<p><strong>Property 6:</strong> The inverse of the product of two matrices is equal to the product of their inverses in reverse order. <span class="math notranslate nohighlight">\((\mathbf{A}\mathbf{B})^{-1} = \mathbf{B}^{-1}\mathbf{A}^{-1}\)</span>.</p>
+</section>
+<section id="the-determinant-of-a-matrix">
+<h2>The Determinant of a Matrix<a class="headerlink" href="#the-determinant-of-a-matrix" title="Link to this heading">#</a></h2>
+<p>The determinant is a scalar value uniquely associated with a square non-singular matrix, and is usually denoted as <span class="math notranslate nohighlight">\(|\mathbf{A}|\)</span>. The question of whether or not a matrix is nonsingular and therefore invertible is linked to the value of its determinant.</p>
+<p>We can write a generic <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrix as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{A} = \begin{bmatrix} a_{11} &amp; a_{12} \\ a_{21} &amp; a_{22} \end{bmatrix}
+\end{split}\]</div>
+<p>and its determinant is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+|\mathbf{A}| = a_{11}a_{22} - a_{12}a_{21}
+\]</div>
+<p>For a <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrix, say:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{B} = \begin{bmatrix} b_{11} &amp; b_{12} &amp; b_{13} \\ b_{21} &amp; b_{22} &amp; b_{23} \\ b_{31} &amp; b_{32} &amp; b_{33} \end{bmatrix}
+\end{split}\]</div>
+<p>its determinant is:</p>
+<div class="math notranslate nohighlight">
+\[
+|\mathbf{B}| = b_{11}(b_{22}b_{33} - b_{23}b_{32}) - b_{12}(b_{21}b_{33} - b_{23}b_{31}) + b_{13}(b_{21}b_{32} - b_{22}b_{31})
+\]</div>
+<section id="properties-of-determinants">
+<h3>Properties of Determinants<a class="headerlink" href="#properties-of-determinants" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(|\mathbf{A}| = |\mathbf{A}'|\)</span> and <span class="math notranslate nohighlight">\(|\mathbf{A}| \cdot |\mathbf{B}| = |\mathbf{B}| \cdot |\mathbf{A}|\)</span>.</p></li>
+<li><p>Interchanging any two rows or columns will affect the sign of the determinant, but not its absolute value.</p></li>
+<li><p>Multiplying a single row or column by a scalar will cause the value of the determinant to be multiplied by the scalar.</p></li>
+<li><p>Addition or subtraction of a nonzero multiple of any row or column to or from another row or column does not change the value of the determinant.</p></li>
+<li><p>The determinant of a triangular matrix is equal to the product of the elements along the principal diagonal.</p></li>
+<li><p>If any of the rows or columns equal zero, the determinant is also zero.</p></li>
+<li><p>If two rows or columns are identical or proportional, i.e. linearly dependent, then the determinant is zero.</p></li>
+</ol>
+</section>
+</section>
+<section id="finding-the-inverse-of-a-matrix">
+<h2>Finding the Inverse of a Matrix<a class="headerlink" href="#finding-the-inverse-of-a-matrix" title="Link to this heading">#</a></h2>
+<p>The inverse of a matrix is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{A}^{-1} = \frac{1}{|\mathbf{A}|} \operatorname{adj}(\mathbf{A})
+\]</div>
+<p>Let’s say we have the following linear system:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+2x_1 + 9x_2 + 4x_3 = -13 \\
+7x_1 - 8x_2 + 6x_3 = 63 \\
+5x_1 + 3x_2 - 6x_3 = 6
+\end{split}\]</div>
+<p>Writing the above system in the form <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span>, where:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{A} = \begin{bmatrix} 2 &amp; 9 &amp; 4 \\ 7 &amp; -8 &amp; 6 \\ 5 &amp; 3 &amp; -6 \end{bmatrix}, \quad \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}, \quad \mathbf{b} = \begin{bmatrix} -13 \\ 63 \\ 6 \end{bmatrix}
+\end{split}\]</div>
+<p>We can therefore solve the system by <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{A}^{-1}\mathbf{b}\)</span>, which means that we need the inverse of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
+<p><strong>Step 1.</strong> The minor <span class="math notranslate nohighlight">\(|M_{ij}|\)</span> is the determinant of the submatrix formed by deleting the <span class="math notranslate nohighlight">\(i\)</span>-th row and <span class="math notranslate nohighlight">\(j\)</span>-th column of the original matrix. So we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+30 &amp; -72 &amp; 61 \\
+-66 &amp; -32 &amp; -39 \\
+86 &amp; -16 &amp; -79
+\end{bmatrix}
+\end{split}\]</div>
+<p><strong>Step 2:</strong> The cofactor <span class="math notranslate nohighlight">\(C_{ij}\)</span> is a minor with the prescribed sign that follows the rule:</p>
+<div class="math notranslate nohighlight">
+\[
+C_{ij} = (-1)^{i+j} |M_{ij}|
+\]</div>
+<p>Hence, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+30 &amp; 72 &amp; 61 \\
+66 &amp; -32 &amp; 39 \\
+86 &amp; 16 &amp; -79
+\end{bmatrix}
+\end{split}\]</div>
+<p><strong>Step 3:</strong> An adjoint matrix is simply the transpose of a cofactor matrix. Continuing the example above, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\operatorname{adj}(\mathbf{A}) = \begin{bmatrix}
+30 &amp; 66 &amp; 86 \\
+72 &amp; -32 &amp; 16 \\
+61 &amp; 39 &amp; -79
+\end{bmatrix}
+\end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(|\mathbf{A}| = 952\)</span>, we then have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{A}^{-1} = \frac{1}{952} \begin{bmatrix}
+30 &amp; 66 &amp; 86 \\
+72 &amp; -32 &amp; 16 \\
+61 &amp; 39 &amp; -79
+\end{bmatrix}
+\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{x} = \mathbf{A}^{-1}\mathbf{b} = \frac{1}{952} \begin{bmatrix}
+30 &amp; 66 &amp; 86 \\
+72 &amp; -32 &amp; 16 \\
+61 &amp; 39 &amp; -79
+\end{bmatrix} \begin{bmatrix} -13 \\ 63 \\ 6 \end{bmatrix}
+\end{split}\]</div>
+<p>Not a nice one to solve, though.</p>
+</section>
+<section id="cramer-s-rule">
+<h2>Cramer’s Rule<a class="headerlink" href="#cramer-s-rule" title="Link to this heading">#</a></h2>
+<p>Cramer came up with a simplified method for solving a system of linear equations through the use of determinants.</p>
+<p>Basically, given <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{A} = \begin{bmatrix} a_{11} &amp; a_{12} &amp; a_{13} \\ a_{21} &amp; a_{22} &amp; a_{23} \\ a_{31} &amp; a_{32} &amp; a_{33} \end{bmatrix}, \quad \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}, \quad \mathbf{b} = \begin{bmatrix} b_1 \\ b_2 \\ b_3 \end{bmatrix}
+\end{split}\]</div>
+<p>Define:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta = |\mathbf{A}|
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\Delta_1 = \begin{vmatrix} b_1 &amp; a_{12} &amp; a_{13} \\ b_2 &amp; a_{22} &amp; a_{23} \\ b_3 &amp; a_{32} &amp; a_{33} \end{vmatrix}, \quad \Delta_2 = \begin{vmatrix} a_{11} &amp; b_1 &amp; a_{13} \\ a_{21} &amp; b_2 &amp; a_{23} \\ a_{31} &amp; b_3 &amp; a_{33} \end{vmatrix}, \quad \Delta_3 = \begin{vmatrix} a_{11} &amp; a_{12} &amp; b_1 \\ a_{21} &amp; a_{22} &amp; b_2 \\ a_{31} &amp; a_{32} &amp; b_3 \end{vmatrix}
+\end{split}\]</div>
+<p>where the columns in the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> matrix are replaced one by one by the <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> vector as shown above.</p>
+<p>Then:</p>
+<div class="math notranslate nohighlight">
+\[
+x_i = \frac{\Delta_i}{\Delta}
+\]</div>
+<p>Verify that you get <span class="math notranslate nohighlight">\(\{4.5, -3, 1.25\}\)</span>.</p>
+<hr class="docutils" />
+<p><em>Linear algebra 1-5.pptx (17107k) 8 Jan 31, 2018, 7:56 AM v.1</em><br />
+<em>Linear algebra 6.pptx (3924k) 8 Feb 5, 2018, 7:15 AM v.1</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Math Notes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="linear-algebra-special.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3. Linear Algebra: Special Matrices</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-basics">Matrix Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idempotent-matrix">Idempotent matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-notes-on-matrices">Some Notes on Matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-of-equations-in-matrix-form">Systems of Equations in Matrix Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">Matrix Inversion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-determinant-of-a-matrix">The Determinant of a Matrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-determinants">Properties of Determinants</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-inverse-of-a-matrix">Finding the Inverse of a Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cramer-s-rule">Cramer’s Rule</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
