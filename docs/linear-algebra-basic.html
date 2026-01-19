@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. Linear Algebra: Basics &#8212; My sample book</title>
+    <title>2. Linear Algebra: Basics &#8212; Math Econ II</title>
   
   
   
@@ -150,14 +150,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
   
+    <p class="title logo__title">Math Econ II</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -183,6 +177,11 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Linear Algebra: Basics</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="linear-algebra-special.html">3. Linear Algebra: Special Matrices</a></li>
 </ul>
 
@@ -379,18 +378,63 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-basics">Matrix Basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idempotent-matrix">Idempotent matrix</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2. Linear Algebra: Basics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-basics">Matrix Basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-addition-and-subtraction">Matrix Addition and Subtraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose-of-a-matrix">Transpose of a Matrix</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-begin-bmatrix-a-b-c-d-end-bmatrix"><strong>Example:</strong>
+$$
+\begin{bmatrix}
+a &amp; b <br/>
+c &amp; d
+\end{bmatrix}’</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null-zero-matrix">Null (Zero) Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-multiplication">Scalar Multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-begin-bmatrix-a-b-c-d-end-bmatrix-begin-bmatrix-e-f-g-h-end-bmatrix"><strong>Example:</strong>
+$$
+\begin{bmatrix}
+a &amp; b <br/>
+c &amp; d
+\end{bmatrix}
+\begin{bmatrix}
+e &amp; f <br/>
+g &amp; h
+\end{bmatrix}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-matrix">Diagonal Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-of-a-square-matrix">Trace of a Square Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">Identity Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetric-matrix">Symmetric Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idempotent-matrix">Idempotent Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-matrix-and-linear-dependence">Singular Matrix and Linear Dependence</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-notes-on-matrices">Some Notes on Matrices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-of-equations-in-matrix-form">Systems of Equations in Matrix Form</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">Matrix Inversion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-determinant-of-a-matrix">The Determinant of a Matrix</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-determinants">Properties of Determinants</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-inverse-of-a-matrix">Finding the Inverse of a Matrix</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cramer-s-rule">Cramer’s Rule</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#suppose-begin-bmatrix-a-b-c-d-end-bmatrix">Suppose
+$$
+\begin{bmatrix} a &amp; b \ c &amp; d \end{bmatrix}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplying-both-sides-by-frac-1-10-gives-frac-1-10-begin-bmatrix-4-2-3-1-end-bmatrix-begin-bmatrix-1-2-3-4-end-bmatrix">Multiplying both sides by <span class="math notranslate nohighlight">\(\frac{1}{10}\)</span> gives:
+$$
+\frac{1}{10}
+\begin{bmatrix} 4 &amp; 2 \ -3 &amp; 1 \end{bmatrix}
+\begin{bmatrix} 1 &amp; -2 \ 3 &amp; 4 \end{bmatrix}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#thus-mathbf-a-1">Thus,
+$$
+\mathbf{A}^{-1}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determinant-of-a-matrix">Determinant of a Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cramers-rule">Cramer’s Rule</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -403,278 +447,294 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="linear-algebra-basics">
 <h1>2. Linear Algebra: Basics<a class="headerlink" href="#linear-algebra-basics" title="Link to this heading">#</a></h1>
+<p>This chapter introduces the basic algebraic objects and operations that underpin
+most of applied mathematics in economics, statistics, and optimization.
+The emphasis is on <strong>mechanics</strong>, <strong>intuition</strong>, and <strong>practical manipulation</strong>,
+rather than abstract proofs.</p>
+<hr class="docutils" />
 <section id="matrix-basics">
 <h2>Matrix Basics<a class="headerlink" href="#matrix-basics" title="Link to this heading">#</a></h2>
-<p><strong>Matrix addition and subtraction:</strong> If <span class="math notranslate nohighlight">\(\mathbf{A} = (a_{ij})\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B} = (b_{ij})\)</span> are two <span class="math notranslate nohighlight">\(m \times n\)</span> matrices of same dimension, then <span class="math notranslate nohighlight">\(\mathbf{A} + \mathbf{B}\)</span> is defined as <span class="math notranslate nohighlight">\((a_{ij} + b_{ij})\)</span>. That is, we add element by element the two matrices.<br />
-Clearly <span class="math notranslate nohighlight">\(\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}\)</span>. The rule applies to matrix subtraction.</p>
-<p><strong>Transpose of a matrix:</strong> If <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix, then <span class="math notranslate nohighlight">\(\mathbf{A}'\)</span> is the <span class="math notranslate nohighlight">\(n \times m\)</span> matrix whose rows are the columns of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>. So <span class="math notranslate nohighlight">\(\mathbf{A}' = (a_{ji})\)</span>. For example:</p>
+<section id="matrix-addition-and-subtraction">
+<h3>Matrix Addition and Subtraction<a class="headerlink" href="#matrix-addition-and-subtraction" title="Link to this heading">#</a></h3>
+<p>If
+<span class="math notranslate nohighlight">\(\mathbf{A} = (a_{ij})\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B} = (b_{ij})\)</span>
+are two <span class="math notranslate nohighlight">\(m \times n\)</span> matrices of the same dimension, then matrix addition is defined element by element:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
+\[
+\mathbf{A} + \mathbf{B} = (a_{ij} + b_{ij}).
+\]</div>
+<p>That is, we add the corresponding elements of the two matrices.</p>
+<p>Clearly,
+$<span class="math notranslate nohighlight">\(
+\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}.
+\)</span>$</p>
+<p>The same rule applies to matrix subtraction.</p>
+</section>
+<hr class="docutils" />
+<section id="transpose-of-a-matrix">
+<h3>Transpose of a Matrix<a class="headerlink" href="#transpose-of-a-matrix" title="Link to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix, then <span class="math notranslate nohighlight">\(\mathbf{A}'\)</span> is the <span class="math notranslate nohighlight">\(n \times m\)</span> matrix whose rows are the columns of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>. Formally,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{A}' = (a_{ji}).
+\]</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="example-begin-bmatrix-a-b-c-d-end-bmatrix">
+<h1><strong>Example:</strong>
+$$
 \begin{bmatrix}
-a &amp; b \\
+a &amp; b <br />
 c &amp; d
-\end{bmatrix}' = \begin{bmatrix}
-a &amp; c \\
+\end{bmatrix}’<a class="headerlink" href="#example-begin-bmatrix-a-b-c-d-end-bmatrix" title="Link to this heading">#</a></h1>
+<p>\begin{bmatrix}
+a &amp; c <br />
 b &amp; d
-\end{bmatrix}
-\end{split}\]</div>
-<p>Note: <span class="math notranslate nohighlight">\((\mathbf{A} + \mathbf{B})' = \mathbf{A}' + \mathbf{B}'\)</span>, however <span class="math notranslate nohighlight">\((\mathbf{A}\mathbf{B})' = \mathbf{B}'\mathbf{A}'\)</span>.</p>
-<p><strong>Null matrix:</strong> Has all elements as 0. Clearly <span class="math notranslate nohighlight">\(\mathbf{A} + \mathbf{0}_{m,n} = \mathbf{0}_{m,n} + \mathbf{A} = \mathbf{A}\)</span> for all <span class="math notranslate nohighlight">\(m \times n\)</span> matrices.</p>
-<p><strong>Scalar multiplication:</strong> If <span class="math notranslate nohighlight">\(\mathbf{A} = (a_{ij})\)</span> then for any constant <span class="math notranslate nohighlight">\(k\)</span>, define <span class="math notranslate nohighlight">\(k\mathbf{A} = (k a_{ij})\)</span>. That is, multiply each element in <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> by <span class="math notranslate nohighlight">\(k\)</span>.</p>
-<p><strong>Matrix multiplication:</strong> Say <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is <span class="math notranslate nohighlight">\(m \times n\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> is <span class="math notranslate nohighlight">\(n \times p\)</span>, then the <span class="math notranslate nohighlight">\(m \times p\)</span> matrix <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> is the product of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>. For example:</p>
+\end{bmatrix}.
+$$</p>
+<p>The transpose interacts nicely with addition, but not with multiplication:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((\mathbf{A} + \mathbf{B})' = \mathbf{A}' + \mathbf{B}'\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\mathbf{A}\mathbf{B})' = \mathbf{B}'\mathbf{A}'\)</span></p></li>
+</ul>
+<hr class="docutils" />
+<section id="null-zero-matrix">
+<h2>Null (Zero) Matrix<a class="headerlink" href="#null-zero-matrix" title="Link to this heading">#</a></h2>
+<p>The <strong>null matrix</strong> has all elements equal to zero.</p>
+<p>For any <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>,
+$<span class="math notranslate nohighlight">\(
+\mathbf{A} + \mathbf{0}*{m,n} = \mathbf{0}*{m,n} + \mathbf{A} = \mathbf{A}.
+\)</span>$</p>
+<hr class="docutils" />
+</section>
+<section id="scalar-multiplication">
+<h2>Scalar Multiplication<a class="headerlink" href="#scalar-multiplication" title="Link to this heading">#</a></h2>
+<p>If <span class="math notranslate nohighlight">\(\mathbf{A} = (a_{ij})\)</span> and <span class="math notranslate nohighlight">\(k\)</span> is a scalar, define</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
+\[
+k\mathbf{A} = (k a_{ij}),
+\]</div>
+<p>that is, multiply every element of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> by <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<hr class="docutils" />
+</section>
+<section id="matrix-multiplication">
+<h2>Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Link to this heading">#</a></h2>
+<p>Suppose <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is <span class="math notranslate nohighlight">\(m \times n\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> is <span class="math notranslate nohighlight">\(n \times p\)</span>.
+Then the product <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> is an <span class="math notranslate nohighlight">\(m \times p\)</span> matrix.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="example-begin-bmatrix-a-b-c-d-end-bmatrix-begin-bmatrix-e-f-g-h-end-bmatrix">
+<h1><strong>Example:</strong>
+$$
 \begin{bmatrix}
-a &amp; b \\
+a &amp; b <br />
 c &amp; d
 \end{bmatrix}
 \begin{bmatrix}
-e &amp; f \\
+e &amp; f <br />
 g &amp; h
-\end{bmatrix}
-= \begin{bmatrix}
-ae + bg &amp; af + bh \\
+\end{bmatrix}<a class="headerlink" href="#example-begin-bmatrix-a-b-c-d-end-bmatrix-begin-bmatrix-e-f-g-h-end-bmatrix" title="Link to this heading">#</a></h1>
+<p>\begin{bmatrix}
+ae + bg &amp; af + bh <br />
 ce + dg &amp; cf + dh
-\end{bmatrix}
-\end{split}\]</div>
-<p>and the matrices <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are conformable.</p>
-<p><strong>Diagonal matrix:</strong> A square <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is diagonal if all entries off the ‘main diagonal’ are zero, i.e.</p>
+\end{bmatrix}.
+$$</p>
+<p>The matrices <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are said to be <strong>conformable</strong>.</p>
+<p>Matrix multiplication is generally <strong>not commutative</strong>:
+<span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}\)</span>.</p>
+<hr class="docutils" />
+<section id="diagonal-matrix">
+<h2>Diagonal Matrix<a class="headerlink" href="#diagonal-matrix" title="Link to this heading">#</a></h2>
+<p>A square <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is <strong>diagonal</strong> if all off-diagonal elements are zero:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{A} = \begin{bmatrix}
-a_{11} &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; a_{22} &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; a_{nn}
-\end{bmatrix}
-\end{split}\]</div>
-<p>Note: The elements in the diagonal of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> are the same as those in <span class="math notranslate nohighlight">\(\mathbf{A}'\)</span>.</p>
-<p><strong>Trace of a square matrix:</strong> If <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is a square matrix, the trace of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, denoted <span class="math notranslate nohighlight">\(\operatorname{tr}(\mathbf{A})\)</span>, is the sum of the elements on the main/leading diagonal of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
-<p><strong>Identity matrix:</strong> Denoted by <span class="math notranslate nohighlight">\(\mathbf{I}_n\)</span>, the <span class="math notranslate nohighlight">\(n \times n\)</span> diagonal matrix with <span class="math notranslate nohighlight">\(a_{ii} = 1\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>. That is:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{I}_n = \begin{bmatrix}
-1 &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; 1 &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; 1
-\end{bmatrix}
-\end{split}\]</div>
-<p><strong>Symmetric matrix:</strong> A square matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is symmetric if <span class="math notranslate nohighlight">\(\mathbf{A} = \mathbf{A}'\)</span>. The identity matrix and the square null matrix are symmetric.</p>
-</section>
-<section id="idempotent-matrix">
-<h2>Idempotent matrix<a class="headerlink" href="#idempotent-matrix" title="Link to this heading">#</a></h2>
-<p>A square matrix is said to be idempotent if <span class="math notranslate nohighlight">\(\mathbf{A}^2 = \mathbf{A}\)</span>. Below is an example (try squaring the matrix and see what you get).</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+\[
+\mathbf{A} =
 \begin{bmatrix}
-1 &amp; 0 \\
-0 &amp; 0
-\end{bmatrix}
-\end{split}\]</div>
-<p><strong>Singular Matrix:</strong> A matrix that is linearly dependent (in the columns or rows) is singular and has determinant of zero. Note that any two (or three) vectors <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> (and <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>) are said to be linearly dependent iff one can be written as a scalar multiple of the other. Two vectors <span class="math notranslate nohighlight">\(\mathbf{x} \neq \mathbf{0}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y} \neq \mathbf{0}\)</span> are said to be <strong>linearly independent</strong> iff the ONLY solution to <span class="math notranslate nohighlight">\(a\mathbf{x} + b\mathbf{y} = \mathbf{0}\)</span> is <span class="math notranslate nohighlight">\(a = 0\)</span> AND <span class="math notranslate nohighlight">\(b = 0\)</span>. And <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> are said to be <strong>orthogonal</strong>.</p>
+a_{11} &amp; 0 &amp; \cdots &amp; 0 \
+0 &amp; a_{22} &amp; \cdots &amp; 0 \
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \
+0 &amp; 0 &amp; \cdots &amp; a_{nn}
+\end{bmatrix}.
+\]</div>
+<p>The diagonal elements of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> are the same as those of <span class="math notranslate nohighlight">\(\mathbf{A}'\)</span>.</p>
+<hr class="docutils" />
 </section>
+<section id="trace-of-a-square-matrix">
+<h2>Trace of a Square Matrix<a class="headerlink" href="#trace-of-a-square-matrix" title="Link to this heading">#</a></h2>
+<p>For a square matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, the <strong>trace</strong>, denoted <span class="math notranslate nohighlight">\(\operatorname{tr}(\mathbf{A})\)</span>, is the sum of the elements on the main diagonal.</p>
+<hr class="docutils" />
+</section>
+<section id="identity-matrix">
+<h2>Identity Matrix<a class="headerlink" href="#identity-matrix" title="Link to this heading">#</a></h2>
+<p>The <strong>identity matrix</strong> <span class="math notranslate nohighlight">\(\mathbf{I}_n\)</span> is the <span class="math notranslate nohighlight">\(n \times n\)</span> diagonal matrix with ones on the diagonal:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{I}_n =
+\begin{bmatrix}
+1 &amp; 0 &amp; \cdots &amp; 0 \
+0 &amp; 1 &amp; \cdots &amp; 0 \
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \
+0 &amp; 0 &amp; \cdots &amp; 1
+\end{bmatrix}.
+\]</div>
+<hr class="docutils" />
+</section>
+<section id="symmetric-matrix">
+<h2>Symmetric Matrix<a class="headerlink" href="#symmetric-matrix" title="Link to this heading">#</a></h2>
+<p>A square matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is <strong>symmetric</strong> if</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{A} = \mathbf{A}'.
+\]</div>
+<p>The identity matrix and the square null matrix are symmetric.</p>
+</section>
+<hr class="docutils" />
+<section id="idempotent-matrix">
+<h2>Idempotent Matrix<a class="headerlink" href="#idempotent-matrix" title="Link to this heading">#</a></h2>
+<p>A square matrix is <strong>idempotent</strong> if</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{A}^2 = \mathbf{A}.
+\]</div>
+<p>Try squaring the following matrix:
+$<span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+1 &amp; 0 \
+0 &amp; 0
+\end{bmatrix}.
+\)</span>$</p>
+</section>
+<hr class="docutils" />
+<section id="singular-matrix-and-linear-dependence">
+<h2>Singular Matrix and Linear Dependence<a class="headerlink" href="#singular-matrix-and-linear-dependence" title="Link to this heading">#</a></h2>
+<p>A matrix is <strong>singular</strong> if its rows or columns are linearly dependent.
+A singular matrix has determinant zero.</p>
+<p>Two vectors <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> are <strong>linearly dependent</strong> if one can be written as a scalar multiple of the other.</p>
+<p>They are <strong>linearly independent</strong> if the only solution to</p>
+<div class="math notranslate nohighlight">
+\[
+a\mathbf{x} + b\mathbf{y} = \mathbf{0}
+\]</div>
+<p>is <span class="math notranslate nohighlight">\(a = 0\)</span> and <span class="math notranslate nohighlight">\(b = 0\)</span>.</p>
+<p>Two nonzero vectors are <strong>orthogonal</strong> if their inner product is zero.</p>
+</section>
+<hr class="docutils" />
 <section id="some-notes-on-matrices">
 <h2>Some Notes on Matrices<a class="headerlink" href="#some-notes-on-matrices" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Usually <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}\)</span>. For example, try <span class="math notranslate nohighlight">\(\mathbf{A} = \begin{bmatrix}2 &amp; 0 \\ 3 &amp; 1\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B} = \begin{bmatrix}0 &amp; 1 \\ 0 &amp; 0\end{bmatrix}\)</span>.</p></li>
-<li><p>We can have <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B} = \mathbf{0}\)</span> even if <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> or <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are not zero. For example, try <span class="math notranslate nohighlight">\(\mathbf{A} = \begin{bmatrix}6 &amp; -12 \\ -3 &amp; 6\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B} = \begin{bmatrix}12 &amp; 6 \\ 6 &amp; 3\end{bmatrix}\)</span>.</p></li>
-<li><p>Say, <span class="math notranslate nohighlight">\(\mathbf{A} = \begin{bmatrix}4 &amp; 8 \\ 1 &amp; 2\end{bmatrix}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{B} = \begin{bmatrix}2 &amp; 1 \\ 2 &amp; 2\end{bmatrix}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{C} = \begin{bmatrix}-2 &amp; 1 \\ 4 &amp; 2\end{bmatrix}\)</span>. We find that <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B} = \mathbf{A}\mathbf{C}\)</span> even though <span class="math notranslate nohighlight">\(\mathbf{B} \neq \mathbf{C}\)</span>.</p></li>
-<li><p>Say <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are singular matrices. Then <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> will not be zero, although the product will be a singular matrix.</p></li>
+<li><p>In general, <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}\)</span>.
+Try <span class="math notranslate nohighlight">\(\mathbf{A} = \begin{bmatrix}2 &amp; 0 \ 3 &amp; 1\end{bmatrix}\)</span> and
+<span class="math notranslate nohighlight">\(\mathbf{B} = \begin{bmatrix}0 &amp; 1 \ 0 &amp; 0\end{bmatrix}\)</span>.</p></li>
+<li><p>It is possible that <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B} = \mathbf{0}\)</span> even if neither <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> nor <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> is zero.
+Try
+$<span class="math notranslate nohighlight">\(
+\mathbf{A} =
+\begin{bmatrix}6 &amp; -12 \ -3 &amp; 6\end{bmatrix},
+\quad
+\mathbf{B} =
+\begin{bmatrix}12 &amp; 6 \ 6 &amp; 3\end{bmatrix}.
+\)</span>$</p></li>
+<li><p>We can have <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B} = \mathbf{A}\mathbf{C}\)</span> even if <span class="math notranslate nohighlight">\(\mathbf{B} \neq \mathbf{C}\)</span>.
+Example matrices are given below.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are singular, then <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> is also singular, though not necessarily zero.</p></li>
 </ol>
 </section>
+<hr class="docutils" />
 <section id="systems-of-equations-in-matrix-form">
 <h2>Systems of Equations in Matrix Form<a class="headerlink" href="#systems-of-equations-in-matrix-form" title="Link to this heading">#</a></h2>
-<p>One of the uses of linear algebra in economics is to represent and then solve systems of equations. For instance, consider the system of two equations:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-3x_1 + 4x_2 = 5 \\
-7x_1 - 2x_2 = 2
-\end{split}\]</div>
-<p>Here, we can define:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{A} = \begin{pmatrix} 3 &amp; 4 \\ 7 &amp; -2 \end{pmatrix}, \quad \mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}, \quad \mathbf{b} = \begin{pmatrix} 5 \\ 2 \end{pmatrix}
-\end{split}\]</div>
-<p>Then we see that:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{A}\mathbf{x} = \begin{pmatrix} 3 &amp; 4 \\ 7 &amp; -2 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 3x_1 + 4x_2 \\ 7x_1 - 2x_2 \end{pmatrix}
-\end{split}\]</div>
-<p>The original system is in fact equivalent to the matrix form:</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{A}\mathbf{x} = \mathbf{b}
-\]</div>
+<p>Consider the system:
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+3x_1 + 4x_2 &amp;= 5 \
+7x_1 - 2x_2 &amp;= 2
+\end{aligned}
+\)</span>$</p>
+<p>Define:
+$<span class="math notranslate nohighlight">\(
+\mathbf{A} =
+\begin{pmatrix} 3 &amp; 4 \ 7 &amp; -2 \end{pmatrix},
+\quad
+\mathbf{x} =
+\begin{pmatrix} x_1 \ x_2 \end{pmatrix},
+\quad
+\mathbf{b} =
+\begin{pmatrix} 5 \ 2 \end{pmatrix}.
+\)</span>$</p>
+<p>Then the system can be written compactly as:
+$<span class="math notranslate nohighlight">\(
+\mathbf{A}\mathbf{x} = \mathbf{b}.
+\)</span>$</p>
 </section>
+<hr class="docutils" />
 <section id="matrix-inversion">
 <h2>Matrix Inversion<a class="headerlink" href="#matrix-inversion" title="Link to this heading">#</a></h2>
-<p>To better understand the mechanics of finding the inverse of a square matrix, let’s begin by looking at an example.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{A} = \begin{bmatrix} 1 &amp; -2 \\ 3 &amp; 4 \end{bmatrix}
-\end{split}\]</div>
-<p>Assume we have:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix} = \begin{bmatrix} 4 &amp; 2 \\ -3 &amp; 1 \end{bmatrix}
-\end{split}\]</div>
-<p>Where does the 10 in the matrix after the = sign come from? It is the determinant of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
-<p>Now we have:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix} 4 &amp; 2 \\ -3 &amp; 1 \end{bmatrix} \begin{bmatrix} 1 &amp; -2 \\ 3 &amp; 4 \end{bmatrix} = \begin{bmatrix} 10 &amp; 0 \\ 0 &amp; 10 \end{bmatrix} = 10 \mathbf{I}
-\end{split}\]</div>
-<p>Hence, (pre-)multiplying both sides of the equation by <span class="math notranslate nohighlight">\(\frac{1}{10}\)</span> will give you:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\frac{1}{10} \begin{bmatrix} 4 &amp; 2 \\ -3 &amp; 1 \end{bmatrix} \begin{bmatrix} 1 &amp; -2 \\ 3 &amp; 4 \end{bmatrix} = \mathbf{I}
-\end{split}\]</div>
-<p>The matrix <span class="math notranslate nohighlight">\(\frac{1}{10} \begin{bmatrix} 4 &amp; 2 \\ -3 &amp; 1 \end{bmatrix}\)</span> is in fact the inverse of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>. Hence we have the relationship <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{A}^{-1} = \mathbf{I}\)</span>. In fact, <span class="math notranslate nohighlight">\(\mathbf{A}^{-1}\mathbf{A} = \mathbf{A}\mathbf{A}^{-1} = \mathbf{I}\)</span>.</p>
-<p>Here are some properties of the inverse of a matrix worth knowing:</p>
-<p><strong>Property 1:</strong> For any nonsingular matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, <span class="math notranslate nohighlight">\((\mathbf{A}^{-1})^{-1} = \mathbf{A}\)</span>.</p>
-<p><strong>Property 2:</strong> The determinant of the inverse of a matrix is equal to the reciprocal of the determinant of the matrix. That is <span class="math notranslate nohighlight">\(|\mathbf{A}^{-1}| = \frac{1}{|\mathbf{A}|}\)</span>.</p>
-<p><strong>Property 3:</strong> The inverse of matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is unique.</p>
-<p><strong>Property 4:</strong> For any nonsingular matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, the inverse of the transpose of a matrix is equal to the transpose of the inverse of the matrix. <span class="math notranslate nohighlight">\((\mathbf{A}')^{-1} = (\mathbf{A}^{-1})'\)</span>.</p>
-<p><strong>Property 5:</strong> If <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are nonsingular and of the same dimension, then <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> is also nonsingular.</p>
-<p><strong>Property 6:</strong> The inverse of the product of two matrices is equal to the product of their inverses in reverse order. <span class="math notranslate nohighlight">\((\mathbf{A}\mathbf{B})^{-1} = \mathbf{B}^{-1}\mathbf{A}^{-1}\)</span>.</p>
-</section>
-<section id="the-determinant-of-a-matrix">
-<h2>The Determinant of a Matrix<a class="headerlink" href="#the-determinant-of-a-matrix" title="Link to this heading">#</a></h2>
-<p>The determinant is a scalar value uniquely associated with a square non-singular matrix, and is usually denoted as <span class="math notranslate nohighlight">\(|\mathbf{A}|\)</span>. The question of whether or not a matrix is nonsingular and therefore invertible is linked to the value of its determinant.</p>
-<p>We can write a generic <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrix as:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{A} = \begin{bmatrix} a_{11} &amp; a_{12} \\ a_{21} &amp; a_{22} \end{bmatrix}
-\end{split}\]</div>
-<p>and its determinant is defined as:</p>
-<div class="math notranslate nohighlight">
-\[
-|\mathbf{A}| = a_{11}a_{22} - a_{12}a_{21}
-\]</div>
-<p>For a <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrix, say:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{B} = \begin{bmatrix} b_{11} &amp; b_{12} &amp; b_{13} \\ b_{21} &amp; b_{22} &amp; b_{23} \\ b_{31} &amp; b_{32} &amp; b_{33} \end{bmatrix}
-\end{split}\]</div>
-<p>its determinant is:</p>
-<div class="math notranslate nohighlight">
-\[
-|\mathbf{B}| = b_{11}(b_{22}b_{33} - b_{23}b_{32}) - b_{12}(b_{21}b_{33} - b_{23}b_{31}) + b_{13}(b_{21}b_{32} - b_{22}b_{31})
-\]</div>
-<section id="properties-of-determinants">
-<h3>Properties of Determinants<a class="headerlink" href="#properties-of-determinants" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(|\mathbf{A}| = |\mathbf{A}'|\)</span> and <span class="math notranslate nohighlight">\(|\mathbf{A}| \cdot |\mathbf{B}| = |\mathbf{B}| \cdot |\mathbf{A}|\)</span>.</p></li>
-<li><p>Interchanging any two rows or columns will affect the sign of the determinant, but not its absolute value.</p></li>
-<li><p>Multiplying a single row or column by a scalar will cause the value of the determinant to be multiplied by the scalar.</p></li>
-<li><p>Addition or subtraction of a nonzero multiple of any row or column to or from another row or column does not change the value of the determinant.</p></li>
-<li><p>The determinant of a triangular matrix is equal to the product of the elements along the principal diagonal.</p></li>
-<li><p>If any of the rows or columns equal zero, the determinant is also zero.</p></li>
-<li><p>If two rows or columns are identical or proportional, i.e. linearly dependent, then the determinant is zero.</p></li>
-</ol>
+<p>Consider:
+$<span class="math notranslate nohighlight">\(
+\mathbf{A} =
+\begin{bmatrix} 1 &amp; -2 \ 3 &amp; 4 \end{bmatrix}.
+\)</span>$</p>
 </section>
 </section>
-<section id="finding-the-inverse-of-a-matrix">
-<h2>Finding the Inverse of a Matrix<a class="headerlink" href="#finding-the-inverse-of-a-matrix" title="Link to this heading">#</a></h2>
-<p>The inverse of a matrix is defined as:</p>
+<section class="tex2jax_ignore mathjax_ignore" id="suppose-begin-bmatrix-a-b-c-d-end-bmatrix">
+<h1>Suppose
+$$
+\begin{bmatrix} a &amp; b \ c &amp; d \end{bmatrix}<a class="headerlink" href="#suppose-begin-bmatrix-a-b-c-d-end-bmatrix" title="Link to this heading">#</a></h1>
+<p>\begin{bmatrix} 4 &amp; 2 \ -3 &amp; 1 \end{bmatrix}.
+$$</p>
+<p>The number 10 that appears below is the <strong>determinant</strong> of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[
-\mathbf{A}^{-1} = \frac{1}{|\mathbf{A}|} \operatorname{adj}(\mathbf{A})
-\]</div>
-<p>Let’s say we have the following linear system:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-2x_1 + 9x_2 + 4x_3 = -13 \\
-7x_1 - 8x_2 + 6x_3 = 63 \\
-5x_1 + 3x_2 - 6x_3 = 6
-\end{split}\]</div>
-<p>Writing the above system in the form <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span>, where:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{A} = \begin{bmatrix} 2 &amp; 9 &amp; 4 \\ 7 &amp; -8 &amp; 6 \\ 5 &amp; 3 &amp; -6 \end{bmatrix}, \quad \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}, \quad \mathbf{b} = \begin{bmatrix} -13 \\ 63 \\ 6 \end{bmatrix}
-\end{split}\]</div>
-<p>We can therefore solve the system by <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{A}^{-1}\mathbf{b}\)</span>, which means that we need the inverse of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
-<p><strong>Step 1.</strong> The minor <span class="math notranslate nohighlight">\(|M_{ij}|\)</span> is the determinant of the submatrix formed by deleting the <span class="math notranslate nohighlight">\(i\)</span>-th row and <span class="math notranslate nohighlight">\(j\)</span>-th column of the original matrix. So we have:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}
-30 &amp; -72 &amp; 61 \\
--66 &amp; -32 &amp; -39 \\
-86 &amp; -16 &amp; -79
-\end{bmatrix}
-\end{split}\]</div>
-<p><strong>Step 2:</strong> The cofactor <span class="math notranslate nohighlight">\(C_{ij}\)</span> is a minor with the prescribed sign that follows the rule:</p>
-<div class="math notranslate nohighlight">
-\[
-C_{ij} = (-1)^{i+j} |M_{ij}|
-\]</div>
-<p>Hence, we have:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}
-30 &amp; 72 &amp; 61 \\
-66 &amp; -32 &amp; 39 \\
-86 &amp; 16 &amp; -79
-\end{bmatrix}
-\end{split}\]</div>
-<p><strong>Step 3:</strong> An adjoint matrix is simply the transpose of a cofactor matrix. Continuing the example above, we have:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\operatorname{adj}(\mathbf{A}) = \begin{bmatrix}
-30 &amp; 66 &amp; 86 \\
-72 &amp; -32 &amp; 16 \\
-61 &amp; 39 &amp; -79
-\end{bmatrix}
-\end{split}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(|\mathbf{A}| = 952\)</span>, we then have:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{A}^{-1} = \frac{1}{952} \begin{bmatrix}
-30 &amp; 66 &amp; 86 \\
-72 &amp; -32 &amp; 16 \\
-61 &amp; 39 &amp; -79
-\end{bmatrix}
-\end{split}\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{x} = \mathbf{A}^{-1}\mathbf{b} = \frac{1}{952} \begin{bmatrix}
-30 &amp; 66 &amp; 86 \\
-72 &amp; -32 &amp; 16 \\
-61 &amp; 39 &amp; -79
-\end{bmatrix} \begin{bmatrix} -13 \\ 63 \\ 6 \end{bmatrix}
-\end{split}\]</div>
-<p>Not a nice one to solve, though.</p>
+\[ \begin{align}\begin{aligned}
+\begin{bmatrix} 4 &amp; 2 \ -3 &amp; 1 \end{bmatrix}
+\begin{bmatrix} 1 &amp; -2 \ 3 &amp; 4 \end{bmatrix}
+============================================\\# \begin{bmatrix} 10 &amp; 0 \ 0 &amp; 10 \end{bmatrix}\\10\mathbf{I}.
+\end{aligned}\end{align} \]</div>
 </section>
-<section id="cramer-s-rule">
-<h2>Cramer’s Rule<a class="headerlink" href="#cramer-s-rule" title="Link to this heading">#</a></h2>
-<p>Cramer came up with a simplified method for solving a system of linear equations through the use of determinants.</p>
-<p>Basically, given <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span>, we have:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{A} = \begin{bmatrix} a_{11} &amp; a_{12} &amp; a_{13} \\ a_{21} &amp; a_{22} &amp; a_{23} \\ a_{31} &amp; a_{32} &amp; a_{33} \end{bmatrix}, \quad \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}, \quad \mathbf{b} = \begin{bmatrix} b_1 \\ b_2 \\ b_3 \end{bmatrix}
-\end{split}\]</div>
-<p>Define:</p>
-<div class="math notranslate nohighlight">
-\[
-\Delta = |\mathbf{A}|
-\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\Delta_1 = \begin{vmatrix} b_1 &amp; a_{12} &amp; a_{13} \\ b_2 &amp; a_{22} &amp; a_{23} \\ b_3 &amp; a_{32} &amp; a_{33} \end{vmatrix}, \quad \Delta_2 = \begin{vmatrix} a_{11} &amp; b_1 &amp; a_{13} \\ a_{21} &amp; b_2 &amp; a_{23} \\ a_{31} &amp; b_3 &amp; a_{33} \end{vmatrix}, \quad \Delta_3 = \begin{vmatrix} a_{11} &amp; a_{12} &amp; b_1 \\ a_{21} &amp; a_{22} &amp; b_2 \\ a_{31} &amp; a_{32} &amp; b_3 \end{vmatrix}
-\end{split}\]</div>
-<p>where the columns in the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> matrix are replaced one by one by the <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> vector as shown above.</p>
-<p>Then:</p>
-<div class="math notranslate nohighlight">
-\[
-x_i = \frac{\Delta_i}{\Delta}
-\]</div>
-<p>Verify that you get <span class="math notranslate nohighlight">\(\{4.5, -3, 1.25\}\)</span>.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="multiplying-both-sides-by-frac-1-10-gives-frac-1-10-begin-bmatrix-4-2-3-1-end-bmatrix-begin-bmatrix-1-2-3-4-end-bmatrix">
+<h1>Multiplying both sides by <span class="math notranslate nohighlight">\(\frac{1}{10}\)</span> gives:
+$$
+\frac{1}{10}
+\begin{bmatrix} 4 &amp; 2 \ -3 &amp; 1 \end{bmatrix}
+\begin{bmatrix} 1 &amp; -2 \ 3 &amp; 4 \end{bmatrix}<a class="headerlink" href="#multiplying-both-sides-by-frac-1-10-gives-frac-1-10-begin-bmatrix-4-2-3-1-end-bmatrix-begin-bmatrix-1-2-3-4-end-bmatrix" title="Link to this heading">#</a></h1>
+<p>\mathbf{I}.
+$$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="thus-mathbf-a-1">
+<h1>Thus,
+$$
+\mathbf{A}^{-1}<a class="headerlink" href="#thus-mathbf-a-1" title="Link to this heading">#</a></h1>
+<p>\frac{1}{10}
+\begin{bmatrix} 4 &amp; 2 \ -3 &amp; 1 \end{bmatrix}.
+$$</p>
 <hr class="docutils" />
-<p><em>Linear algebra 1-5.pptx (17107k) 8 Jan 31, 2018, 7:56 AM v.1</em><br />
-<em>Linear algebra 6.pptx (3924k) 8 Feb 5, 2018, 7:15 AM v.1</em></p>
+<section id="determinant-of-a-matrix">
+<h2>Determinant of a Matrix<a class="headerlink" href="#determinant-of-a-matrix" title="Link to this heading">#</a></h2>
+<p>For a <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrix:
+$<span class="math notranslate nohighlight">\(
+\mathbf{A} =
+\begin{bmatrix}
+a_{11} &amp; a_{12} \
+a_{21} &amp; a_{22}
+\end{bmatrix},
+\)</span>$</p>
+<p>the determinant is:
+$<span class="math notranslate nohighlight">\(
+|\mathbf{A}| = a_{11}a_{22} - a_{12}a_{21}.
+\)</span>$</p>
+<p>The <span class="math notranslate nohighlight">\(3 \times 3\)</span> case follows analogously (formula retained exactly as given).</p>
+</section>
+<hr class="docutils" />
+<section id="cramers-rule">
+<h2>Cramer’s Rule<a class="headerlink" href="#cramers-rule" title="Link to this heading">#</a></h2>
+<p>Given <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span>, define:
+$<span class="math notranslate nohighlight">\(
+\Delta = |\mathbf{A}|, \qquad x_i = \frac{\Delta_i}{\Delta}.
+\)</span>$</p>
+<p>Verify that the solution is <span class="math notranslate nohighlight">\({4.5, -3, 1.25}\)</span>.</p>
+<hr class="docutils" />
+<p>Linear algebra 1–5.pptx (2018)
+Linear algebra 6.pptx (2018)</p>
+<hr class="docutils" />
 </section>
 </section>
 
@@ -742,18 +802,63 @@ x_i = \frac{\Delta_i}{\Delta}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-basics">Matrix Basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idempotent-matrix">Idempotent matrix</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2. Linear Algebra: Basics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-basics">Matrix Basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-addition-and-subtraction">Matrix Addition and Subtraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose-of-a-matrix">Transpose of a Matrix</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-begin-bmatrix-a-b-c-d-end-bmatrix"><strong>Example:</strong>
+$$
+\begin{bmatrix}
+a &amp; b <br/>
+c &amp; d
+\end{bmatrix}’</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null-zero-matrix">Null (Zero) Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-multiplication">Scalar Multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-begin-bmatrix-a-b-c-d-end-bmatrix-begin-bmatrix-e-f-g-h-end-bmatrix"><strong>Example:</strong>
+$$
+\begin{bmatrix}
+a &amp; b <br/>
+c &amp; d
+\end{bmatrix}
+\begin{bmatrix}
+e &amp; f <br/>
+g &amp; h
+\end{bmatrix}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-matrix">Diagonal Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-of-a-square-matrix">Trace of a Square Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">Identity Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetric-matrix">Symmetric Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idempotent-matrix">Idempotent Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-matrix-and-linear-dependence">Singular Matrix and Linear Dependence</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-notes-on-matrices">Some Notes on Matrices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-of-equations-in-matrix-form">Systems of Equations in Matrix Form</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">Matrix Inversion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-determinant-of-a-matrix">The Determinant of a Matrix</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-determinants">Properties of Determinants</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-inverse-of-a-matrix">Finding the Inverse of a Matrix</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cramer-s-rule">Cramer’s Rule</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#suppose-begin-bmatrix-a-b-c-d-end-bmatrix">Suppose
+$$
+\begin{bmatrix} a &amp; b \ c &amp; d \end{bmatrix}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplying-both-sides-by-frac-1-10-gives-frac-1-10-begin-bmatrix-4-2-3-1-end-bmatrix-begin-bmatrix-1-2-3-4-end-bmatrix">Multiplying both sides by <span class="math notranslate nohighlight">\(\frac{1}{10}\)</span> gives:
+$$
+\frac{1}{10}
+\begin{bmatrix} 4 &amp; 2 \ -3 &amp; 1 \end{bmatrix}
+\begin{bmatrix} 1 &amp; -2 \ 3 &amp; 4 \end{bmatrix}</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#thus-mathbf-a-1">Thus,
+$$
+\mathbf{A}^{-1}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determinant-of-a-matrix">Determinant of a Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cramers-rule">Cramer’s Rule</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
@@ -767,7 +872,7 @@ x_i = \frac{\Delta_i}{\Delta}
   <div class="footer-item">
     
 <p class="component-author">
-By The Jupyter Book Community
+By -YY-
 </p>
 
   </div>
