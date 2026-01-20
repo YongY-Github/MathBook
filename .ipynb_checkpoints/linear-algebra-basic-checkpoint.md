@@ -70,9 +70,7 @@ $$
 
 **Symmetric matrix:** A square matrix $\mathbf{A}$ is symmetric if $\mathbf{A} = \mathbf{A}'$. The identity matrix and the square null matrix are symmetric.
 
-## Idempotent matrix
-
-A square matrix is said to be idempotent if $\mathbf{A}^2 = \mathbf{A}$. Below is an example (try squaring the matrix and see what you get).
+**Idempotent matrix:** A square matrix is said to be idempotent if $\mathbf{A}^n = \cdots = \mathbf{A}^2 = \mathbf{A}$. Below is an example (try squaring the matrix and see what you get).
 
 $$
 \begin{bmatrix}
@@ -83,7 +81,7 @@ $$
 
 **Singular Matrix:** A matrix that is linearly dependent (in the columns or rows) is singular and has determinant of zero. Note that any two (or three) vectors $\mathbf{x}$ and $\mathbf{y}$ (and $\mathbf{z}$) are said to be linearly dependent iff one can be written as a scalar multiple of the other. Two vectors $\mathbf{x} \neq \mathbf{0}$ and $\mathbf{y} \neq \mathbf{0}$ are said to be **linearly independent** iff the ONLY solution to $a\mathbf{x} + b\mathbf{y} = \mathbf{0}$ is $a = 0$ AND $b = 0$. And $\mathbf{x}$ and $\mathbf{y}$ are said to be **orthogonal**.
 
-## Some Notes on Matrices
+### Some Notes on Matrices
 
 1. Usually $\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}$. For example, try $\mathbf{A} = \begin{bmatrix}2 & 0 \\ 3 & 1\end{bmatrix}$ and $\mathbf{B} = \begin{bmatrix}0 & 1 \\ 0 & 0\end{bmatrix}$.
 
@@ -105,13 +103,13 @@ $$
 Here, we can define:
 
 $$
-\mathbf{A} = \begin{pmatrix} 3 & 4 \\ 7 & -2 \end{pmatrix}, \quad \mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}, \quad \mathbf{b} = \begin{pmatrix} 5 \\ 2 \end{pmatrix}
+\mathbf{A} = \begin{bmatrix} 3 & 4 \\ 7 & -2 \end{bmatrix}, \quad \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}, \quad \mathbf{b} = \begin{bmatrix} 5 \\ 2 \end{bmatrix}
 $$
 
 Then we see that:
 
 $$
-\mathbf{A}\mathbf{x} = \begin{pmatrix} 3 & 4 \\ 7 & -2 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 3x_1 + 4x_2 \\ 7x_1 - 2x_2 \end{pmatrix}
+\mathbf{A}\mathbf{x} = \begin{bmatrix} 3 & 4 \\ 7 & -2 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} 3x_1 + 4x_2 \\ 7x_1 - 2x_2 \end{bmatrix}
 $$
 
 The original system is in fact equivalent to the matrix form:
@@ -149,6 +147,8 @@ $$
 $$
 
 The matrix $\frac{1}{10} \begin{bmatrix} 4 & 2 \\ -3 & 1 \end{bmatrix}$ is in fact the inverse of $\mathbf{A}$. Hence we have the relationship $\mathbf{A}\mathbf{A}^{-1} = \mathbf{I}$. In fact, $\mathbf{A}^{-1}\mathbf{A} = \mathbf{A}\mathbf{A}^{-1} = \mathbf{I}$.
+
+### Properties of Inverse
 
 Here are some properties of the inverse of a matrix worth knowing:
 
@@ -194,13 +194,19 @@ $$
 
 ### Properties of Determinants
 
-1. $|\mathbf{A}| = |\mathbf{A}'|$ and $|\mathbf{A}| \cdot |\mathbf{B}| = |\mathbf{B}| \cdot |\mathbf{A}|$.
-2. Interchanging any two rows or columns will affect the sign of the determinant, but not its absolute value.
-3. Multiplying a single row or column by a scalar will cause the value of the determinant to be multiplied by the scalar.
-4. Addition or subtraction of a nonzero multiple of any row or column to or from another row or column does not change the value of the determinant.
-5. The determinant of a triangular matrix is equal to the product of the elements along the principal diagonal.
-6. If any of the rows or columns equal zero, the determinant is also zero.
-7. If two rows or columns are identical or proportional, i.e. linearly dependent, then the determinant is zero.
+**Property 1:** $|\mathbf{A}| = |\mathbf{A}'|$ and $|\mathbf{A}| \cdot |\mathbf{B}| = |\mathbf{B}| \cdot |\mathbf{A}|$.
+
+**Property 2:** Interchanging any two rows or columns will affect the sign of the determinant, but not its absolute value.
+
+**Property 3:** Multiplying a single row or column by a scalar will cause the value of the determinant to be multiplied by the scalar.
+
+**Property 4:** Addition or subtraction of a nonzero multiple of any row or column to or from another row or column does not change the value of the determinant.
+
+**Property 5:** The determinant of a triangular matrix is equal to the product of the elements along the principal diagonal.
+
+**Property 6:** If any of the rows or columns equal zero, the determinant is also zero.
+
+**Property 7:** If two rows or columns are identical or proportional, i.e. linearly dependent, then the determinant is zero.
 
 ## Finding the Inverse of a Matrix
 

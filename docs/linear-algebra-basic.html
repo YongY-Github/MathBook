@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -373,11 +373,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-basics">Matrix Basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idempotent-matrix">Idempotent matrix</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-notes-on-matrices">Some Notes on Matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-basics">Matrix Basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-notes-on-matrices">Some Notes on Matrices</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-of-equations-in-matrix-form">Systems of Equations in Matrix Form</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">Matrix Inversion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">Matrix Inversion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-inverse">Properties of Inverse</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-determinant-of-a-matrix">The Determinant of a Matrix</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-determinants">Properties of Determinants</a></li>
 </ul>
@@ -455,10 +459,7 @@ a_{11} &amp; 0 &amp; \cdots &amp; 0 \\
 \end{bmatrix}
 \end{split}\]</div>
 <p><strong>Symmetric matrix:</strong> A square matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is symmetric if <span class="math notranslate nohighlight">\(\mathbf{A} = \mathbf{A}'\)</span>. The identity matrix and the square null matrix are symmetric.</p>
-</section>
-<section id="idempotent-matrix">
-<h2>Idempotent matrix<a class="headerlink" href="#idempotent-matrix" title="Link to this heading">#</a></h2>
-<p>A square matrix is said to be idempotent if <span class="math notranslate nohighlight">\(\mathbf{A}^2 = \mathbf{A}\)</span>. Below is an example (try squaring the matrix and see what you get).</p>
+<p><strong>Idempotent matrix:</strong> A square matrix is said to be idempotent if <span class="math notranslate nohighlight">\(\mathbf{A}^n = \cdots = \mathbf{A}^2 = \mathbf{A}\)</span>. Below is an example (try squaring the matrix and see what you get).</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{bmatrix}
@@ -467,15 +468,15 @@ a_{11} &amp; 0 &amp; \cdots &amp; 0 \\
 \end{bmatrix}
 \end{split}\]</div>
 <p><strong>Singular Matrix:</strong> A matrix that is linearly dependent (in the columns or rows) is singular and has determinant of zero. Note that any two (or three) vectors <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> (and <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>) are said to be linearly dependent iff one can be written as a scalar multiple of the other. Two vectors <span class="math notranslate nohighlight">\(\mathbf{x} \neq \mathbf{0}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y} \neq \mathbf{0}\)</span> are said to be <strong>linearly independent</strong> iff the ONLY solution to <span class="math notranslate nohighlight">\(a\mathbf{x} + b\mathbf{y} = \mathbf{0}\)</span> is <span class="math notranslate nohighlight">\(a = 0\)</span> AND <span class="math notranslate nohighlight">\(b = 0\)</span>. And <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> are said to be <strong>orthogonal</strong>.</p>
-</section>
 <section id="some-notes-on-matrices">
-<h2>Some Notes on Matrices<a class="headerlink" href="#some-notes-on-matrices" title="Link to this heading">#</a></h2>
+<h3>Some Notes on Matrices<a class="headerlink" href="#some-notes-on-matrices" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Usually <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}\)</span>. For example, try <span class="math notranslate nohighlight">\(\mathbf{A} = \begin{bmatrix}2 &amp; 0 \\ 3 &amp; 1\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B} = \begin{bmatrix}0 &amp; 1 \\ 0 &amp; 0\end{bmatrix}\)</span>.</p></li>
 <li><p>We can have <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B} = \mathbf{0}\)</span> even if <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> or <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are not zero. For example, try <span class="math notranslate nohighlight">\(\mathbf{A} = \begin{bmatrix}6 &amp; -12 \\ -3 &amp; 6\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B} = \begin{bmatrix}12 &amp; 6 \\ 6 &amp; 3\end{bmatrix}\)</span>.</p></li>
 <li><p>Say, <span class="math notranslate nohighlight">\(\mathbf{A} = \begin{bmatrix}4 &amp; 8 \\ 1 &amp; 2\end{bmatrix}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{B} = \begin{bmatrix}2 &amp; 1 \\ 2 &amp; 2\end{bmatrix}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{C} = \begin{bmatrix}-2 &amp; 1 \\ 4 &amp; 2\end{bmatrix}\)</span>. We find that <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B} = \mathbf{A}\mathbf{C}\)</span> even though <span class="math notranslate nohighlight">\(\mathbf{B} \neq \mathbf{C}\)</span>.</p></li>
 <li><p>Say <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are singular matrices. Then <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> will not be zero, although the product will be a singular matrix.</p></li>
 </ol>
+</section>
 </section>
 <section id="systems-of-equations-in-matrix-form">
 <h2>Systems of Equations in Matrix Form<a class="headerlink" href="#systems-of-equations-in-matrix-form" title="Link to this heading">#</a></h2>
@@ -488,12 +489,12 @@ a_{11} &amp; 0 &amp; \cdots &amp; 0 \\
 <p>Here, we can define:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\mathbf{A} = \begin{pmatrix} 3 &amp; 4 \\ 7 &amp; -2 \end{pmatrix}, \quad \mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}, \quad \mathbf{b} = \begin{pmatrix} 5 \\ 2 \end{pmatrix}
+\mathbf{A} = \begin{bmatrix} 3 &amp; 4 \\ 7 &amp; -2 \end{bmatrix}, \quad \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}, \quad \mathbf{b} = \begin{bmatrix} 5 \\ 2 \end{bmatrix}
 \end{split}\]</div>
 <p>Then we see that:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\mathbf{A}\mathbf{x} = \begin{pmatrix} 3 &amp; 4 \\ 7 &amp; -2 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 3x_1 + 4x_2 \\ 7x_1 - 2x_2 \end{pmatrix}
+\mathbf{A}\mathbf{x} = \begin{bmatrix} 3 &amp; 4 \\ 7 &amp; -2 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} 3x_1 + 4x_2 \\ 7x_1 - 2x_2 \end{bmatrix}
 \end{split}\]</div>
 <p>The original system is in fact equivalent to the matrix form:</p>
 <div class="math notranslate nohighlight">
@@ -525,6 +526,8 @@ a_{11} &amp; 0 &amp; \cdots &amp; 0 \\
 \frac{1}{10} \begin{bmatrix} 4 &amp; 2 \\ -3 &amp; 1 \end{bmatrix} \begin{bmatrix} 1 &amp; -2 \\ 3 &amp; 4 \end{bmatrix} = \mathbf{I}
 \end{split}\]</div>
 <p>The matrix <span class="math notranslate nohighlight">\(\frac{1}{10} \begin{bmatrix} 4 &amp; 2 \\ -3 &amp; 1 \end{bmatrix}\)</span> is in fact the inverse of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>. Hence we have the relationship <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{A}^{-1} = \mathbf{I}\)</span>. In fact, <span class="math notranslate nohighlight">\(\mathbf{A}^{-1}\mathbf{A} = \mathbf{A}\mathbf{A}^{-1} = \mathbf{I}\)</span>.</p>
+<section id="properties-of-inverse">
+<h3>Properties of Inverse<a class="headerlink" href="#properties-of-inverse" title="Link to this heading">#</a></h3>
 <p>Here are some properties of the inverse of a matrix worth knowing:</p>
 <p><strong>Property 1:</strong> For any nonsingular matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, <span class="math notranslate nohighlight">\((\mathbf{A}^{-1})^{-1} = \mathbf{A}\)</span>.</p>
 <p><strong>Property 2:</strong> The determinant of the inverse of a matrix is equal to the reciprocal of the determinant of the matrix. That is <span class="math notranslate nohighlight">\(|\mathbf{A}^{-1}| = \frac{1}{|\mathbf{A}|}\)</span>.</p>
@@ -532,6 +535,7 @@ a_{11} &amp; 0 &amp; \cdots &amp; 0 \\
 <p><strong>Property 4:</strong> For any nonsingular matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, the inverse of the transpose of a matrix is equal to the transpose of the inverse of the matrix. <span class="math notranslate nohighlight">\((\mathbf{A}')^{-1} = (\mathbf{A}^{-1})'\)</span>.</p>
 <p><strong>Property 5:</strong> If <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are nonsingular and of the same dimension, then <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> is also nonsingular.</p>
 <p><strong>Property 6:</strong> The inverse of the product of two matrices is equal to the product of their inverses in reverse order. <span class="math notranslate nohighlight">\((\mathbf{A}\mathbf{B})^{-1} = \mathbf{B}^{-1}\mathbf{A}^{-1}\)</span>.</p>
+</section>
 </section>
 <section id="the-determinant-of-a-matrix">
 <h2>The Determinant of a Matrix<a class="headerlink" href="#the-determinant-of-a-matrix" title="Link to this heading">#</a></h2>
@@ -558,15 +562,13 @@ a_{11} &amp; 0 &amp; \cdots &amp; 0 \\
 \]</div>
 <section id="properties-of-determinants">
 <h3>Properties of Determinants<a class="headerlink" href="#properties-of-determinants" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(|\mathbf{A}| = |\mathbf{A}'|\)</span> and <span class="math notranslate nohighlight">\(|\mathbf{A}| \cdot |\mathbf{B}| = |\mathbf{B}| \cdot |\mathbf{A}|\)</span>.</p></li>
-<li><p>Interchanging any two rows or columns will affect the sign of the determinant, but not its absolute value.</p></li>
-<li><p>Multiplying a single row or column by a scalar will cause the value of the determinant to be multiplied by the scalar.</p></li>
-<li><p>Addition or subtraction of a nonzero multiple of any row or column to or from another row or column does not change the value of the determinant.</p></li>
-<li><p>The determinant of a triangular matrix is equal to the product of the elements along the principal diagonal.</p></li>
-<li><p>If any of the rows or columns equal zero, the determinant is also zero.</p></li>
-<li><p>If two rows or columns are identical or proportional, i.e. linearly dependent, then the determinant is zero.</p></li>
-</ol>
+<p><strong>Property 1:</strong> <span class="math notranslate nohighlight">\(|\mathbf{A}| = |\mathbf{A}'|\)</span> and <span class="math notranslate nohighlight">\(|\mathbf{A}| \cdot |\mathbf{B}| = |\mathbf{B}| \cdot |\mathbf{A}|\)</span>.</p>
+<p><strong>Property 2:</strong> Interchanging any two rows or columns will affect the sign of the determinant, but not its absolute value.</p>
+<p><strong>Property 3:</strong> Multiplying a single row or column by a scalar will cause the value of the determinant to be multiplied by the scalar.</p>
+<p><strong>Property 4:</strong> Addition or subtraction of a nonzero multiple of any row or column to or from another row or column does not change the value of the determinant.</p>
+<p><strong>Property 5:</strong> The determinant of a triangular matrix is equal to the product of the elements along the principal diagonal.</p>
+<p><strong>Property 6:</strong> If any of the rows or columns equal zero, the determinant is also zero.</p>
+<p><strong>Property 7:</strong> If two rows or columns are identical or proportional, i.e. linearly dependent, then the determinant is zero.</p>
 </section>
 </section>
 <section id="finding-the-inverse-of-a-matrix">
@@ -736,11 +738,15 @@ x_i = \frac{\Delta_i}{\Delta}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-basics">Matrix Basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idempotent-matrix">Idempotent matrix</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-notes-on-matrices">Some Notes on Matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-basics">Matrix Basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-notes-on-matrices">Some Notes on Matrices</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-of-equations-in-matrix-form">Systems of Equations in Matrix Form</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">Matrix Inversion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">Matrix Inversion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-inverse">Properties of Inverse</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-determinant-of-a-matrix">The Determinant of a Matrix</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-determinants">Properties of Determinants</a></li>
 </ul>
